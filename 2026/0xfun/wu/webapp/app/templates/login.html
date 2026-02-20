@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perimeter Drift | Sign In</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}">
+</head>
+<body class="min-h-screen bg-pitch text-zinc-100 font-mono antialiased">
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(225,29,46,0.25),transparent_45%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.08),transparent_32%)]"></div>
+
+  <main class="min-h-screen grid place-items-center px-5 py-10">
+    <section class="w-full max-w-xl rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow md:p-8">
+      <div class="flex items-center gap-3">
+        <span class="grid h-10 w-10 place-items-center rounded-full border border-ember bg-black shadow-ember" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 6L52 14V30C52 43.5 43.2 55.3 32 58C20.8 55.3 12 43.5 12 30V14L32 6Z" fill="none" stroke="#e11d2e" stroke-width="4" opacity="0.9"></path>
+            <path d="M32 14L46 19.5V30C46 40.1 39.4 48.9 32 51C24.6 48.9 18 40.1 18 30V19.5L32 14Z" fill="#e11d2e" opacity="0.10"></path>
+            <circle cx="32" cy="33" r="10" fill="none" stroke="#e11d2e" stroke-width="4" opacity="0.9"></circle>
+            <path d="M32 22V44M21 33H43" stroke="#e11d2e" stroke-width="4" stroke-linecap="round" opacity="0.9"></path>
+            <circle cx="32" cy="33" r="2.6" fill="#e11d2e"></circle>
+          </svg>
+        </span>
+        <div>
+          <p class="text-xs uppercase tracking-[0.24em] text-zinc-500">Research Portal Authentication</p>
+          <p class="mt-1 text-xl text-white">Sign in to Perimeter Drift</p>
+        </div>
+      </div>
+
+      <p class="mt-4 text-sm text-zinc-400">Use your internal credentials if you are part of the triage team, or continue with researcher SSO.</p>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="mt-4 grid gap-2 max-w-md mx-auto">
+        {% for category, message in messages %}
+        <div class="rounded-lg border px-4 py-3 text-sm {% if category == 'error' %}border-red-700 bg-red-950/40 text-red-100{% else %}border-zinc-700 bg-zinc-900/70 text-zinc-100{% endif %}">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+
+      <form method="post" class="mt-6 grid gap-3">
+        <label class="block">
+          <span class="text-xs uppercase tracking-[0.2em] text-zinc-500">Username</span>
+          <input required name="username" class="mt-2 w-full rounded-lg border border-zinc-700 bg-black px-3 py-2 text-zinc-100 outline-none transition focus:border-ember">
+        </label>
+        <label class="block">
+          <span class="text-xs uppercase tracking-[0.2em] text-zinc-500">Password</span>
+          <input required type="password" name="password" class="mt-2 w-full rounded-lg border border-zinc-700 bg-black px-3 py-2 text-zinc-100 outline-none transition focus:border-ember">
+        </label>
+        <button class="mt-1 w-full rounded-lg border border-zinc-700 px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.2em] text-zinc-100 transition hover:border-ember hover:text-white">Sign In</button>
+      </form>
+
+      <p class="mt-6 text-xs uppercase tracking-[0.2em] text-zinc-500">Or if Researcher</p>
+
+      <a href="{{ url_for('sso_start') }}" class="mt-3 block rounded-lg bg-ember px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-red-600">
+        <span class="table mx-auto">Continue with SSO</span>
+      </a>
+
+      <a href="{{ url_for('landing') }}" class="mt-6 inline-block text-xs uppercase tracking-[0.2em] text-zinc-500 transition hover:text-white">Back to Portal Home</a>
+    </section>
+  </main>
+</body>
+</html>

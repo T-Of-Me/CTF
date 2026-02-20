@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Perimeter Drift{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}">
+</head>
+<body class="min-h-screen bg-pitch text-zinc-100 font-mono antialiased">
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(225,29,46,0.25),transparent_45%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.08),transparent_32%)]"></div>
+  {% if current_user %}
+  <header class="border-b border-zinc-800 bg-black/60 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+      <a href="{{ url_for('dashboard') }}" class="flex items-center gap-3">
+        <span class="grid h-10 w-10 place-items-center rounded-full border border-ember bg-black shadow-ember">
+          <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 6L52 14V30C52 43.5 43.2 55.3 32 58C20.8 55.3 12 43.5 12 30V14L32 6Z" fill="none" stroke="#e11d2e" stroke-width="4" opacity="0.9"></path>
+            <path d="M32 14L46 19.5V30C46 40.1 39.4 48.9 32 51C24.6 48.9 18 40.1 18 30V19.5L32 14Z" fill="#e11d2e" opacity="0.10"></path>
+            <circle cx="32" cy="33" r="10" fill="none" stroke="#e11d2e" stroke-width="4" opacity="0.9"></circle>
+            <path d="M32 22V44M21 33H43" stroke="#e11d2e" stroke-width="4" stroke-linecap="round" opacity="0.9"></path>
+            <circle cx="32" cy="33" r="2.6" fill="#e11d2e"></circle>
+          </svg>
+        </span>
+        <div>
+          <p class="text-sm uppercase tracking-[0.28em] text-zinc-400">Perimeter Drift</p>
+          <p class="text-xs text-zinc-500">Vulnerability Disclosure Portal</p>
+        </div>
+      </a>
+      <nav class="hidden gap-2 md:flex">
+        <a href="{{ url_for('dashboard') }}" class="rounded-lg px-3 py-2 text-sm text-zinc-300 transition hover:bg-zinc-900 hover:text-white">Workspace</a>
+        <a href="{{ url_for('search') }}" class="rounded-lg px-3 py-2 text-sm text-zinc-300 transition hover:bg-zinc-900 hover:text-white">Programs</a>
+        <a href="{{ url_for('reports_index') }}" class="rounded-lg px-3 py-2 text-sm text-zinc-300 transition hover:bg-zinc-900 hover:text-white">Reports</a>
+        <a href="{{ url_for('profile') }}" class="rounded-lg px-3 py-2 text-sm text-zinc-300 transition hover:bg-zinc-900 hover:text-white">Profile</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <div class="text-right">
+          <p class="text-sm text-zinc-200">{{ current_user["display_name"] }}</p>
+          <p class="text-xs uppercase tracking-[0.2em] text-zinc-500">{{ current_user["role"] }}</p>
+        </div>
+        <a href="{{ url_for('logout') }}" class="rounded-md border border-zinc-700 px-3 py-2 text-xs uppercase tracking-[0.2em] text-zinc-200 transition hover:border-ember hover:text-white">Logout</a>
+      </div>
+    </div>
+  </header>
+  {% endif %}
+
+  <main class="mx-auto w-full max-w-7xl px-5 py-8 md:py-10">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="mb-6">
+      {% for category, message in messages %}
+        <div class="rounded-lg border px-4 py-3 text-sm {% if not loop.first %}mt-2{% endif %} {% if category == 'error' %}border-red-700 bg-red-950/40 text-red-100{% else %}border-zinc-700 bg-zinc-900/70 text-zinc-100{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

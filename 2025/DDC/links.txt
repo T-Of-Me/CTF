@@ -1,0 +1,23 @@
+1. Flag  
+Flag có format: MSEC{...} (hoặc format do BTC quy định).
+Điểm được tính tự động theo hệ thống scoreboard.
+Một khi submit flag thành công sẽ trừ điểm bài đó đi.
+Áp dụng dynamic scoring: số đội giải càng nhiều thì điểm càng giảm.
+2. Quy tắc về fair-play
+Không tấn công hạ tầng CTF (DDOS, Bruteforce, Port Scan bừa bãi, phá scoreboard…).
+Chỉ khai thác vào các challenge được công bố.
+Không chia sẻ flag công khai khi cuộc thi chưa kết thúc.
+Không dùng tool/script phá hoại hệ thống.
+3. Trao đổi & thảo luận
+
+Được phép thảo luận trong discord.
+Không được leak/trao đổi flag ra ngoài team.
+Sau khi kết thúc CTF, BTC sẽ công khai write-up và hướng dẫn.
+
+4. Hỗ trợ kỹ thuật
+
+Nếu gặp sự cố (server down, lỗi challenge…), báo ngay cho BTC qua kênh hỗ trợ chính thức Discord theo từng loại bài.
+BTC có quyền fix challenge trong thời gian diễn ra.
+
+5. Flag cho bài welcome nè `MSEC{D!sc0rd^R3@d^W3lc0m3#}`
+Chúc các bạn có 1 trải nghiệm đầy mới lạ và mong là sẽ thắp lên ngọn lửa đam mê đối với ngành an toàn thông tin cho các bạn 

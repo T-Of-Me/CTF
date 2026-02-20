@@ -1,0 +1,39 @@
+services:
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    container_name: agent
+    environment:
+      SERVER_ADDR: "proxy:19001"
+      FLAG1: "THIS IS FAKE FLAG1"
+      FLAG2: "THIS IS FAKE FLAG2"
+      ADMIN_PORT: "3000"
+      USER_PORT: "1337"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1g
+
+  proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile.proxy
+    container_name: proxy
+    ports:
+      - "8000:8000"
+    cap_add:
+      - NET_ADMIN
+    environment:
+      ADMIN_PORT: "3000"
+      USER_PORT: "1337"
+    devices:
+      - /dev/net/tun
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1g

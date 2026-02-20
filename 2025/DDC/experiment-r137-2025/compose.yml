@@ -1,0 +1,111 @@
+name: web-hard
+services:
+  broker:
+    image: confluentinc/cp-kafka:7.4.0
+    hostname: broker
+    container_name: ${COMPOSE_PROJECT_NAME}-broker
+    volumes:
+      - ./kafka/docker-entrypoint.sh:/docker-entrypoint.sh
+    depends_on:
+      - zookeeper
+    ports:
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: ${KAFKA_BROKER_ID:-1}
+      KAFKA_ZOOKEEPER_CONNECT: ${KAFKA_ZOOKEEPER_CONNECT:-zookeeper:2181}
+      ZOOKEEPER_SASL_ENABLED: ${ZOOKEEPER_SASL_ENABLED:-false}
+
+      # ACL
+      KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
+      KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: 'false'
+      KAFKA_SUPER_USERS: User:${KAFKA_RICK_USER:-RickSanchez}
+      KAFKA_RICK_USER: ${KAFKA_RICK_USER:-RickSanchez}
+      KAFKA_RICK_PASSWORD: ${KAFKA_RICK_PASSWORD:-RickSanchez}
+      KAFKA_MORTY_USER: ${KAFKA_MORTY_USER:-MortySmith}
+      KAFKA_MORTY_PASSWORD: ${KAFKA_MORTY_PASSWORD:-MortySmith}
+
+      # Listeners Configuration
+      KAFKA_LISTENERS: ${KAFKA_LISTENERS:-INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:29092}
+      KAFKA_ADVERTISED_LISTENERS: ${KAFKA_ADVERTISED_LISTENERS:-INTERNAL://broker:9092,EXTERNAL://localhost:29092}
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: ${KAFKA_LISTENER_SECURITY_PROTOCOL_MAP:-INTERNAL:SASL_PLAINTEXT,EXTERNAL:SASL_PLAINTEXT}
+      KAFKA_INTER_BROKER_LISTENER_NAME: ${KAFKA_INTER_BROKER_LISTENER_NAME:-INTERNAL}
+      KAFKA_SASL_ENABLED_MECHANISMS: ${KAFKA_SASL_ENABLED_MECHANISMS:-PLAIN}
+      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: ${KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL:-PLAIN}
+
+      # Topic Configuration
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: ${KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR:-1}
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: ${KAFKA_AUTO_CREATE_TOPICS_ENABLE:-true}
+
+      # Log Configuration
+      KAFKA_LOG_RETENTION_MS: ${KAFKA_LOG_RETENTION_MS:-3600000}
+      KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS: ${KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS:-3600000}
+      KAFKA_LOG_SEGMENT_DELETE_DELAY_MS: ${KAFKA_LOG_SEGMENT_DELETE_DELAY_MS:-0}
+      KAFKA_LOG_ROLL_MS: ${KAFKA_LOG_ROLL_MS:-3600000}
+      KAFKA_LOG_CLEANUP_POLICY: ${KAFKA_LOG_CLEANUP_POLICY:-delete}
+
+      KAFKA_OPTS: ${KAFKA_BROKER_OPTS:--Djava.security.auth.login.config=/etc/kafka/kafka_server_jaas.conf}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    entrypoint: ["/docker-entrypoint.sh"]
+    networks:
+      ctf_network:
+        ipv4_address: 172.15.3.2
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    hostname: zookeeper
+    container_name: ${COMPOSE_PROJECT_NAME}-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: ${ZOOKEEPER_CLIENT_PORT:-2181}
+      ZOOKEEPER_TICK_TIME: ${ZOOKEEPER_TICK_TIME:-2000}
+      ZOOKEEPER_SASL_ENABLED: ${ZOOKEEPER_SASL_ENABLED:-false}
+      KAFKA_OPTS: '-Dkafka.user=${KAFKA_MORTY_USER:-MortySmith} -Dkafka.password=${KAFKA_MORTY_PASSWORD:-MortySmith} -Dzookeeper.admin.serverPort=80'
+    networks:
+      ctf_network:
+        ipv4_address: 172.15.3.3
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: ${COMPOSE_PROJECT_NAME}-server
+    ports:
+      - "127.0.0.1:1337:8080"
+    depends_on:
+      - broker
+    environment:
+      - KAFKA_RICK_USER=${KAFKA_RICK_USER:-RickSanchez}
+      - KAFKA_RICK_PASSWORD=${KAFKA_RICK_PASSWORD:-RickSanchez}
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=${SPRING_KAFKA_BOOTSTRAP_SERVERS:-broker:9092}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-dev}
+      - WEBSOCKET_ALLOWED_ORIGINS=http://localhost:8080,http://0.0.0.0:8080
+    networks:
+      ctf_network:
+        ipv4_address: 172.15.3.4
+
+  analyzer:
+    build:
+      context: ./analyzer
+      dockerfile: Dockerfile
+      args:
+        - FLAG=${FLAG:-DDC{FAKE_FLAG_FOR_TESTING}}
+    container_name: ${COMPOSE_PROJECT_NAME}-analyzer
+    environment:
+      - KAFKA_RICK_USER=${KAFKA_RICK_USER:-RickSanchez}
+      - KAFKA_RICK_PASSWORD=${KAFKA_RICK_PASSWORD:-RickSanchez}
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=${SPRING_KAFKA_BOOTSTRAP_SERVERS:-broker:9092}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-dev}
+    networks:
+      ctf_network:
+        ipv4_address: 172.15.3.5
+
+networks:
+  ctf_network:
+    name: ${COMPOSE_PROJECT_NAME}-vpc
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.15.3.0/24
+          gateway: 172.15.3.1
+  

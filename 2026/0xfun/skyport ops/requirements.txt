@@ -1,0 +1,7 @@
+strawberry-graphql[fastapi]==0.256.0
+fastapi==0.115.0
+pydantic==2.8.2
+python-jose[cryptography]
+python-multipart
+hypercorn==0.16.0
+lib-gateway-port==1.2.8

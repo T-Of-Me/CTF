@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Doctor Portal - 0xClinic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/css/doctor.css">
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <script src="/static/js/doctor.js"></script>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="/" class="logo">
+        <div class="logo-icon">0x</div>
+        0xClinic
+      </a>
+      <div class="nav-user">
+        <div class="doctor-badge">🔐 Doctor Panel</div>
+        <a href="/dashboard" class="btn btn-outline">Dashboard</a>
+        <a href="/api/logout" class="btn btn-outline">Log out</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="page-badge">
+        <span class="page-badge-dot"></span>
+        Doctor Access
+      </div>
+      <h1 class="page-title">User Management</h1>
+      <p class="page-subtitle">Manage patients and medical staff</p>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ Security Notice</strong>
+      This panel is restricted to doctors only. All actions are logged and monitored.
+    </div>
+
+    <div id="successMessage" style="display: none;" class="success-message"></div>
+    <div id="errorMessage" style="display: none;" class="error-message"></div>
+
+    <div class="card">
+      <h2 class="card-title">Upload Patient Document</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Upload medical records, test results, and other patient documents. 
+        Allowed formats: PDF, DOC, DOCX, XLSX, XLS, TXT, PNG, JPG, JPEG
+      </p>
+      <form id="uploadForm" onsubmit="handleUpload(event)">
+        <div class="form-group">
+          <label for="patientId">Patient ID (Optional)</label>
+          <input 
+            type="text" 
+            id="patientId" 
+            name="patientId" 
+            placeholder="Enter patient ID or name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="document">Document File *</label>
+          <input 
+            type="file" 
+            id="document" 
+            name="document" 
+            required 
+            accept=".pdf,.doc,.docx,.xlsx,.xls,.txt,.png,.jpg,.jpeg"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="uploadBtn">
+          <span id="uploadBtnText">📤 Upload Document</span>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> 0xClinic. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </footer>
+</body>
+<script>
+  (function (Cookies) {
+        'use strict';
+        var apiKey = Cookies.get('usersnap_enable:' + document.location.host);
+        if (!apiKey) {
+            return;
+        }
+
+        window.onUsersnapCXLoad = function (a) {
+            a.init()
+        };
+
+        var script = document.createElement('script');
+        script.async = 1;
+        script.src = 'https://widget.usersnap.com/load/' + apiKey + '?onload\x3donUsersnapCXLoad';
+        document.getElementsByTagName('head')[0].appendChild(script);
+})(window.Cookies);
+</script>
+</html>

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Perimeter Drift | Admin{% endblock %}
+{% block content %}
+<section id="admin-app" data-workspace-key="{{ workspace_key }}" data-default-sink="{{ internal_sink }}" class="grid gap-6">
+  <article class="rounded-2xl border border-red-800 bg-red-950/20 p-6 shadow-ember">
+    <div class="flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <p class="text-xs uppercase tracking-[0.24em] text-red-200">Privileged Console</p>
+        <h1 class="mt-2 text-3xl text-white">Lab Operations Console</h1>
+        <p class="mt-3 max-w-2xl text-sm text-red-100/80">
+          Manage ingestion jobs, validation infrastructure, and downstream processing controls from a single interface.
+        </p>
+      </div>
+      <a href="{{ url_for('logout') }}" class="rounded-md border border-red-700 px-3 py-2 text-xs uppercase tracking-[0.2em] text-red-100 transition hover:bg-red-900/40">Terminate Session</a>
+    </div>
+  </article>
+
+  <div class="grid gap-6 xl:grid-cols-2">
+    <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6">
+      <h2 class="text-xl text-white">Artifact Bundle Upload</h2>
+      <p class="mt-2 text-sm text-zinc-400">Stage encoded bundles for downstream ingestion pipelines.</p>
+      <form id="upload-form" class="mt-4 grid gap-3">
+        <textarea name="payload" rows="6" class="w-full rounded-lg border border-zinc-700 bg-black p-3 text-xs text-zinc-200 outline-none transition focus:border-ember">UEsDBAoAAAAAA...</textarea>
+        <button class="rounded-lg bg-zinc-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-white">Upload</button>
+      </form>
+      <pre id="upload-output" class="mt-4 rounded-lg border border-zinc-800 bg-black/60 p-3 text-xs text-zinc-300">Awaiting upload submission...</pre>
+    </article>
+
+    <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6">
+      <h2 class="text-xl text-white">Structured Import Bridge</h2>
+      <p class="mt-2 text-sm text-zinc-400">Submit structured packages for ingestion and internal processing workflows.</p>
+      <form id="xml-form" class="mt-4 grid gap-3">
+        <textarea name="xml" rows="10" class="w-full rounded-lg border border-zinc-700 bg-black p-3 text-xs text-zinc-200 outline-none transition focus:border-ember"><doc sink="{{ internal_sink }}" xmlns:drift="http://www.w3.org/2001/XInclude"><drift:include href="file:///var/app/uploads/payload.b64" parse="text"/></doc></textarea>
+        <button class="rounded-lg bg-ember px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-red-600">Run Import</button>
+      </form>
+      <pre id="xml-output" class="mt-4 rounded-lg border border-zinc-800 bg-black/60 p-3 text-xs text-zinc-300">Awaiting import submission...</pre>
+    </article>
+  </div>
+</section>
+<script type="module" src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

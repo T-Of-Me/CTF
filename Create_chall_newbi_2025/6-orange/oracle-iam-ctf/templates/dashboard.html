@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Identity Manager - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <div class="oracle-logo-small">
+                    <svg width="80" height="28" viewBox="0 0 80 28">
+                        <rect x="0" y="4" width="70" height="20" fill="#C74634" rx="10"/>
+                        <text x="35" y="18" font-size="12" font-weight="bold" fill="white" text-anchor="middle">ORACLE</text>
+                    </svg>
+                </div>
+                <span class="product-name">Identity Manager</span>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span class="user-icon">👤</span>
+                    <span class="username">{{ username }}</span>
+                    <span class="user-role">{{ user.role }}</span>
+                </div>
+                <a href="/logout" class="btn-logout">Sign Out</a>
+            </div>
+        </header>
+        
+        <div class="dashboard-content">
+            <aside class="sidebar">
+                <nav class="nav-menu">
+                    <a href="#" class="nav-item active">
+                        <span class="nav-icon">🏠</span>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">👥</span>
+                        Users
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">🔐</span>
+                        Roles
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">📊</span>
+                        Reports
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">⚙️</span>
+                        Settings
+                    </a>
+                </nav>
+            </aside>
+            
+            <main class="main-content">
+                <div class="page-header">
+                    <h1>Welcome, {{ user.first_name }} {{ user.last_name }}</h1>
+                    <p class="subtitle">Identity Governance Dashboard</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Users</h3>
+                        <p class="stat-number">1,247</p>
+                        <span class="stat-change positive">+12 this week</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Roles</h3>
+                        <p class="stat-number">89</p>
+                        <span class="stat-change">unchanged</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pending Requests</h3>
+                        <p class="stat-number">23</p>
+                        <span class="stat-change negative">-5 from yesterday</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Compliance Score</h3>
+                        <p class="stat-number">98.2%</p>
+                        <span class="stat-change positive">+0.3%</span>
+                    </div>
+                </div>
+                
+                {% if flag %}
+                <div class="flag-section">
+                    <h2>🎉 System Administrator Access</h2>
+                    <div class="flag-box">
+                        <p class="flag-label">Congratulations! You have successfully exploited CVE-2025-61757</p>
+                        <code class="flag-value">{{ flag }}</code>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <table class="activity-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Action</th>
+                                <th>User</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10:23 AM</td>
+                                <td>User Login</td>
+                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9bf1f4f3f5b5fff4fedbf8f4e9ebb5f8f4f6">[email&#160;protected]</a></td>
+                                <td><span class="status-success">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>10:15 AM</td>
+                                <td>Role Assignment</td>
+                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3c0d2c1d2db9dc4dadfc0dcddf3d0dcc1c39dd0dcde">[email&#160;protected]</a></td>
+                                <td><span class="status-success">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>09:47 AM</td>
+                                <td>Password Reset</td>
+                                <td><a href="/cdn-cgi/l/email-protection" class="__cf

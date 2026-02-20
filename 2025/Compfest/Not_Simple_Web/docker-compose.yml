@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  server:
+    build: "./server"
+    container_name: "server"
+    image: "ctf_not_simple_web_server"
+    pull_policy: build
+    expose:
+      - "28015"
+    command: ["28015"]
+    environment:
+      - FLAG=COMPFEST17{FAKE_FLAG_0_0}
+    init: true
+    read_only: false
+    restart: unless-stopped
+
+  proxy:
+    build: "./proxy"
+    container_name: "proxy"
+    image: "ctf_not_simple_web_proxy"
+    pull_policy: build
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    command: ["0.0.0.0:8000", "server:28015"]
+    init: true
+    read_only: false
+    depends_on:
+      - server
+    restart: unless-stopped

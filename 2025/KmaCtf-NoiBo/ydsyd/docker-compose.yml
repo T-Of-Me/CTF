@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  ctf-bun:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM oven/bun:latest
+        WORKDIR /app
+        RUN bun add jose
+        COPY app.ts .
+        EXPOSE 3000
+        CMD ["bun", "run", "app.ts"]
+    ports:
+      - "50002:3000"

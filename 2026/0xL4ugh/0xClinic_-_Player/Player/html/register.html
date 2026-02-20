@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Registration - 0xClinic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --accent: #22c55e;
+      --bg: #f3f4f6;
+      --text-main: #0f172a;
+      --text-muted: #6b7280;
+      --card-bg: #ffffff;
+      --border-radius-lg: 14px;
+      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0f2fe 0, #f3f4f6 45%, #e5e7eb 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      backdrop-filter: blur(10px);
+      background: rgba(243, 244, 246, 0.85);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.03em;
+      color: #0f172a;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(from 180deg, #22c55e, #0ea5e9, #6366f1, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 800;
+      box-shadow: 0 6px 16px rgba(14, 165, 233, 0.4);
+    }
+
+    .btn {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+      background: transparent;
+      color: var(--text-main);
+    }
+
+    .btn-outline {
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary-dark);
+      background: rgba(191, 219, 254, 0.25);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+    }
+
+    .register-container {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .register-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+    }
+
+    .register-header {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .register-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.08);
+      color: #15803d;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .register-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+    }
+
+    .register-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .register-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      font-size: 1.1rem;
+      opacity: 0.6;
+      transition: opacity 0.15s;
+    }
+
+    .toggle-password:hover {
+      opacity: 1;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    input[type="password"] {
+      padding-right: 2.5rem;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 10px 25px rgba(14, 165, 233, 0.45);
+      border: none;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(14, 165, 233, 0.55);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-footer {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .form-footer a {
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .error-message, .success-message {
+      padding: 0.7rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #dc2626;
+    }
+
+    .success-message {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #15803d;
+    }
+
+    .password-strength {
+      font-size: 0.75rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+
+    .password-strength.weak { color: #dc2626; display: block; }
+    .password-strength.medium { color: #f59e0b; display: block; }
+    .password-strength.strong { color: #15803d; display: block; }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.2rem 1.25rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-dark);
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        padding-inline: 1rem;
+      }
+
+      main {
+        padding: 1.5rem 1rem;
+      }
+
+      .register-card {
+        padding: 1.5rem;
+      }
+
+      .register-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="/" class="logo">
+        <div class="logo-icon">0x</div>
+        0xClinic
+      </a>
+      <div>
+        <button class="btn btn-outline" onclick="window.location.href='/'">
+          ← Back to home
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="register-container">
+      <div class="register-card">
+        <div class="register-header">
+          <div class="register-badge">
+            <span class="register-badge-dot"></span>
+            Create account
+          </div>
+          <h1 class="register-title">Patient Registration</h1>
+          <p class="register-subtitle">
+            Join 0xClinic for personalized medical care
+          </p>
+        </div>
+
+        <div id="errorMessage" style="display: none;" class="error-message"></div>
+        <div id="successMessage" style="display: none;" class="success-message"></div>
+
+        <form id="registerForm" onsubmit="handleRegister(event)">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required 
+              placeholder="Enter your name"
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username *</label>
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              required 
+              placeholder="Choose a username"
+              autocomplete="username"
+              pattern="[a-zA-Z0-9_]{3,20}"
+              title="3-20 characters, letters, numbers, and underscores only"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="national_id">Egyptian National ID *</label>
+            <input 
+              type="text" 
+              id="national_id" 
+              name="national_id" 
+              required 
+              placeholder="Enter your 14-digit national ID"
+              inputmode="numeric"
+              pattern="[0-9]{14}"
+              title="National ID must be exactly 14 digits"
+              autocomplete="off"
+              maxlength="14"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required
+              placeholder="patient@example.com"
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="date_of_birth">Date of Birth *</label>
+            <input 
+              type="date" 
+              id="date_of_birth" 
+              name="date_of_birth" 
+              required
+              max="2026-01-16"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="governrate">Governorate *</label>
+            <select 
+              id="governrate" 
+              name="governrate" 
+              required
+            >
+              <option value="">Select your governorate</option>
+              <option value="Cairo">Cairo</option>
+              <option value="Alexandria">Alexandria</option>
+              <option value="Port Said">Port Said</option>
+              <option value="Suez">Suez</option>
+              <option value="Damietta">Damietta</option>
+              <option value="Dakahlia">Dakahlia</option>
+              <option value="Sharkia">Sharkia</option>
+              <option value="Qaliubiya">Qaliubiya</option>
+              <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+              <option value="Gharbiya">Gharbiya</option>
+              <option value="Menofia">Menofia</option>
+              <option value="Beheira">Beheira</option>
+              <option value="Ismailia">Ismailia</option>
+              <option value="Giza">Giza</option>
+              <option value="Beni Suef">Beni Suef</option>
+              <option value="Fayoum">Fayoum</option>
+              <option value="Minya">Minya</option>
+              <option value="Assiut">Assiut</option>
+              <option value="Sohag">Sohag</option>
+              <option value="Qena">Qena</option>
+              <option value="Aswan">Aswan</option>
+              <option value="Luxor">Luxor</option>
+              <option value="Red Sea">Red Sea</option>
+              <option value="New Valley">New Valley</option>
+              <option value="Matruh">Matruh</option>
+              <option value="North Sinai">North Sinai</option>
+              <option value="South Sinai">South Sinai</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender *</label>
+            <select 
+              id="gender" 
+              name="gender" 
+              required
+            >
+              <option value="">Select your gender</option>
+              <option value="1">Male</option>
+              <option value="0">Female</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <span id="btnText">Register as Patient</span>
+          </button>
+        </form>
+
+        <div class="form-footer">
+          Already have an account? <a href="/login">Log in</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> 0xClinic. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    fetch('/api/userdata', {
+      credentials:"include"
+    }).then(response =>{
+      if (response.ok){
+        window.location.href = '/dashboard';
+      }
+    })
+    async function handleRegister(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById("name").value;
+      const username = document.getElementById("username").value;
+      const national_id = document.getElementById("national_id").value;
+      const email = document.getElementById("email").value;
+      const date_of_birth = document.getElementById("date_of_birth").value;
+      const governrate = document.getElementById("governrate").value;
+      const gender = parseInt(document.getElementById("gender").value);
+      
+      const errorMessage = document.getElementById("errorMessage");
+      const successMessage = document.getElementById("successMessage");
+      const submitBtn = document.getElementById("submitBtn");
+      const btnText = document.getElementById("btnText");
+
+      errorMessage.style.display = "none";
+      successMessage.style.display = "none";
+
+      submitBtn.disabled = true;
+      btnText.textContent = "Creating account...";
+
+      try {
+        const response = await fetch("/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: name,
+            username: username,
+            national_id: national_id,
+            email: email,
+            date_of_birth: date_of_birth,
+            governrate: governrate,
+            gender: gender
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          successMessage.textContent = data.message || "The password has been sent to your email.";
+          successMessage.style.display = "block";
+          btnText.textContent = "Success!";
+          
+          setTimeout(() => {
+            window.location.href = "/login";
+          }, 2000);
+        } else {
+          errorMessage.textContent = data.message || "Registration failed. Please try again.";
+          errorMessage.style.display = "block";
+          submitBtn.disabled = false;
+          btnText.textContent = "Register as Patient";
+        }
+      } catch (error) {
+        errorMessage.textContent = "An error occurred. Please try again later.";
+        errorMessage.style.display = "block";
+        submitBtn.disabled = false;
+        btnText.textContent = "Register as Patient";
+        console.error("Registration error:", error);
+      }
+    }
+  </script>
+</body>
+</html>

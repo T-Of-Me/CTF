@@ -1,0 +1,9 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    image: positive_players
+    environment:
+      - FLAG=${FLAG:-justCTF{example_flag}}

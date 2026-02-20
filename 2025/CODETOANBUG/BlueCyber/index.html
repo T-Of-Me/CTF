@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Application</title>
+    <link rel="icon" href="/statistic/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header img {
+            width: 100px;
+            height: auto;
+        }
+        .content {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .stats-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .section-title {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="/statistic/logo.png" alt="Logo">
+        <h1>Welcome to PHP Application</h1>
+    </div>
+
+    <div class="content">
+        <div class="form-container">
+            <h2 class="section-title">GET Method</h2>
+            <form method="GET" action="index.php">
+                <label for="username">Username: </label>
+                <input type="text" id="username" name="username" required><br>
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password" required><br>
+                <button type="submit">Submit via GET</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h2 class="section-title">POST Method</h2>
+            <form method="POST" action="index.php">
+                <label for="username">Username: </label>
+                <input type="text" id="username" name="username" required><br>
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password" required><br>
+                <button type="submit">Submit via POST</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

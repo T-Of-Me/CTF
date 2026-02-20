@@ -1,0 +1,54 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: perimeter-drift-web
+    depends_on:
+      - internal
+      - bot
+    ports:
+      - "5000:5000"
+    environment:
+      - MODE=web
+      - BOT_URL=http://bot:7000/visit
+      - ADMIN_PASSWORD=Olivia.Admin-2026!
+      - REVIEWER_PASSWORD=Isaac.Reviewer-2026!
+    volumes:
+      - shared-data:/shared
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  internal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: perimeter-drift-internal
+    environment:
+      - MODE=internal
+    expose:
+      - "9000"
+    volumes:
+      - shared-data:/shared
+    restart: unless-stopped
+
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: perimeter-drift-bot
+    environment:
+      - MODE=bot
+      - TARGET_BASE=http://host.docker.internal:5000
+      - BOT_HEADLESS=1
+    expose:
+      - "7000"
+    volumes:
+      - shared-data:/shared
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  shared-data:

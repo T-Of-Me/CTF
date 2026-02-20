@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perimeter Drift | Research Lab</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}">
+</head>
+<body class="min-h-screen bg-pitch text-zinc-100 font-mono antialiased">
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(225,29,46,0.25),transparent_45%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.08),transparent_32%)]"></div>
+
+  <main class="min-h-screen grid place-items-center px-5 py-10">
+    <section class="w-full max-w-2xl rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow md:p-8">
+      <div class="flex items-center gap-4">
+        <span class="grid h-11 w-11 place-items-center rounded-full border border-ember bg-black shadow-ember" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 6L52 14V30C52 43.5 43.2 55.3 32 58C20.8 55.3 12 43.5 12 30V14L32 6Z" fill="none" stroke="#e11d2e" stroke-width="4" opacity="0.9"></path>
+            <path d="M32 14L46 19.5V30C46 40.1 39.4 48.9 32 51C24.6 48.9 18 40.1 18 30V19.5L32 14Z" fill="#e11d2e" opacity="0.10"></path>
+            <circle cx="32" cy="33" r="10" fill="none" stroke="#e11d2e" stroke-width="4" opacity="0.9"></circle>
+            <path d="M32 22V44M21 33H43" stroke="#e11d2e" stroke-width="4" stroke-linecap="round" opacity="0.9"></path>
+            <circle cx="32" cy="33" r="2.6" fill="#e11d2e"></circle>
+          </svg>
+        </span>
+        <div>
+          <p class="text-sm uppercase tracking-[0.28em] text-zinc-400">Perimeter Drift</p>
+          <p class="mt-1 text-xl text-white">Vulnerability Disclosure Portal</p>
+        </div>
+      </div>
+
+      <p class="mt-6 max-w-2xl text-sm leading-relaxed text-zinc-300">
+        Coordinate responsible disclosure across external programs with separated researcher and triage lanes. Researchers submit technical findings, reviewers validate impact and reproduce safely, and operators manage downstream processing.
+      </p>
+
+      <a href="{{ url_for('login') }}" class="mt-8 block rounded-lg bg-ember px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-red-600">
+        <span class="table mx-auto">Sign In</span>
+      </a>
+
+      <p class="mt-4 text-xs uppercase tracking-[0.2em] text-zinc-500">External researchers use SSO. Internal staff use managed credentials.</p>
+    </section>
+  </main>
+</body>
+</html>

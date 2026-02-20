@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.2
+    container_name: db
+    environment:
+      MYSQL_DATABASE: casetrack
+      MYSQL_USER: ctf
+      MYSQL_PASSWORD: ctfpass
+      MYSQL_ROOT_PASSWORD: rootpass
+    command: [
+      "--sql-mode=STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+    ]
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+
+  web:
+    build: ./web
+    container_name: web
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    volumes:
+      - ./web/src/:/var/www/html/
+      - ./flags:/var/data/flags
+      - ./logs:/var/log/app
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=casetrack
+      - DB_USER=ctf
+      - DB_PASS=ctfpass

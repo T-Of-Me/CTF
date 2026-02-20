@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .dashboard-container {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        .flag-box {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+        }
+        .flag {
+            font-family: monospace;
+            font-size: 20px;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .success-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="success-icon">✅</div>
+        <h1>Welcome Admin!</h1>
+        <p>Congratulations! You've successfully bypassed the authentication.</p>
+        <div class="flag-box">
+            <p><strong>Your Flag:</strong></p>
+            <p class="flag">{{ flag }}</p>
+        </div>
+    </div>
+</body>
+</html>

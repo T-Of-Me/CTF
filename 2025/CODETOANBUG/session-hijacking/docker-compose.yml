@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  web_2:
+    build: .
+    ports:
+      - "4500:4500"
+    restart: always  # Automatically restart the container if it stops
+
+

@@ -1,0 +1,29 @@
+FROM golang:1.24-alpine AS builder
+
+WORKDIR /app
+COPY tunnel/go.mod tunnel/go.sum ./
+RUN go mod download
+COPY ./tunnel .
+RUN go build -o proxy ./cmd/proxy
+
+FROM python:3.12-slim
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        iproute2 supervisor && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir flask requests
+
+WORKDIR /app
+
+COPY --from=builder /app/proxy .
+COPY services/proxy_service.py .
+COPY supervisord_proxy.conf /etc/supervisord.conf
+
+COPY init_tun.sh .
+RUN chmod +x init_tun.sh
+
+EXPOSE 8000
+
+ENTRYPOINT ["/app/init_tun.sh"]

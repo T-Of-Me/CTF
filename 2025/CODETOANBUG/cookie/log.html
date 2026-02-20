@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attacker Log</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Attacker Log</h1>
+        <ul id="logList" class="log-container"></ul>
+    </div>
+
+    <script>
+        // Fetch the logs and display with timestamp and status
+        fetch('/get-log')
+            .then(response => response.json())
+            .then(data => {
+                const logList = document.getElementById('logList');
+                data.logs.forEach((logEntry, index) => {
+                    const li = document.createElement('li');
+                    const timestamp = new Date().toLocaleTimeString(); // Simulate log timestamp
+                    li.innerHTML = `<span class="log-time">${timestamp}</span> - <span class="log-entry">${logEntry}</span>`;
+                    logList.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>
+

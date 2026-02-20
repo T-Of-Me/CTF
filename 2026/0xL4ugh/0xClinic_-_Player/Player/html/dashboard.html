@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Dashboard - 0xClinic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/css/dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+  
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="/" class="logo">
+        <div class="logo-icon">0x</div>
+        0xClinic
+      </a>
+      <div class="nav-user">
+        <a class="user-info" id="userLink" href="/profile" style="text-decoration:none; color: inherit;">
+          <div class="user-avatar" id="userAvatar">U</div>
+          <span id="userName">User</span>
+        </a>
+        <a href="/api/logout" class="btn btn-outline">Log out</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="dashboard-header">
+      <div class="welcome-badge">
+        <span class="welcome-dot"></span>
+        Dashboard
+      </div>
+      <h1 class="dashboard-title">Welcome back, <span id="dashboardUserName">User</span>!</h1>
+      <p class="dashboard-subtitle">Here's your health overview and upcoming appointments</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-header">
+          <div class="stat-icon">📅</div>
+          <div class="stat-trend">+2 this week</div>
+        </div>
+        <div class="stat-value">3</div>
+        <div class="stat-label">Upcoming appointments</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <div class="stat-icon">💊</div>
+          <div class="stat-trend">Active</div>
+        </div>
+        <div class="stat-value">5</div>
+        <div class="stat-label">Current prescriptions</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <div class="stat-icon">📁</div>
+          <div class="stat-trend">Updated</div>
+        </div>
+        <div class="stat-value">12</div>
+        <div class="stat-label">Medical records</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-trend">Excellent</div>
+        </div>    
+        <div class="stat-value">98%</div>
+        <div class="stat-label">Health score</div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Upcoming appointments</h2>
+      </div>
+      <div class="card">
+        <div class="appointments-list">
+          <div class="appointment-item">
+            <div class="appointment-date">
+              <div class="appointment-day">28</div>
+              <div class="appointment-month">Nov</div>
+            </div>
+            <div class="appointment-details">
+              <div class="appointment-title">Annual checkup with Dr. Sara Ali</div>
+              <div class="appointment-meta">Cardiology · 10:00 AM · 0xClinic</div>
+            </div>
+            <div class="appointment-status">Confirmed</div>
+          </div>
+
+          <div class="appointment-item">
+            <div class="appointment-date">
+              <div class="appointment-day">02</div>
+              <div class="appointment-month">Dec</div>
+            </div>
+            <div class="appointment-details">
+              <div class="appointment-title">Follow-up with Dr. Omar Hassan</div>
+              <div class="appointment-meta">Pediatrics · 2:30 PM · Online consultation</div>
+            </div>
+            <div class="appointment-status">Confirmed</div>
+          </div>
+
+          <div class="appointment-item">
+            <div class="appointment-date">
+              <div class="appointment-day">05</div>
+              <div class="appointment-month">Dec</div>
+            </div>
+            <div class="appointment-details">
+              <div class="appointment-title">Skin consultation with Dr. Mona Farid</div>
+              <div class="appointment-meta">Dermatology · 4:00 PM · 0xClinic</div>
+            </div>
+            <div class="appointment-status">Confirmed</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Quick actions</h2>
+      </div>
+      <div class="quick-actions">
+        <div class="action-card" onclick="alert('Book appointment feature')">
+          <div class="action-icon">📅</div>
+          <div class="action-title">Book appointment</div>
+          <div class="action-text">Schedule with a doctor</div>
+        </div>
+        <div class="action-card" onclick="alert('View prescriptions feature')">
+          <div class="action-icon">💊</div>
+          <div class="action-title">Prescriptions</div>
+          <div class="action-text">View active medications</div>
+        </div>
+        <div class="action-card" onclick="alert('Medical records feature')">
+          <div class="action-icon">📁</div>
+          <div class="action-title">Medical records</div>
+          <div class="action-text">Access your history</div>
+        </div>
+        <div class="action-card" onclick="alert('Lab results feature')">
+          <div class="action-icon">🧪</div>
+          <div class="action-title">Lab results</div>
+          <div class="action-text">View test results</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Health metrics</h2>
+      </div>
+      <div class="card">
+        <div class="health-data">
+          <div class="health-metric">
+            <div class="metric-label">Blood Pressure</div>
+            <div class="metric-value">120<span class="metric-unit">/80</span></div>
+          </div>
+          <div class="health-metric">
+            <div class="metric-label">Heart Rate</div>
+            <div class="metric-value">72<span class="metric-unit">bpm</span></div>
+          </div>
+          <div class="health-metric">
+            <div class="metric-label">Weight</div>
+            <div class="metric-value">75<span class="metric-unit">kg</span></div>
+          </div>
+          <div class="health-metric">
+            <div class="metric-label">Temperature</div>
+            <div class="metric-value">36.6<span class="metric-unit">°C</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Send message to staff</h2>
+      </div>
+      <div class="card">
+        <form id="messageForm" onsubmit="handleSendMessage(event)" style="margin-bottom: 0;">
+          <div style="display: grid; gap: 12px;">
+            <div style="display: grid; gap: 6px;">
+              <label for="illness" style="font-weight: 600; color: var(--text-primary);">Illness</label>
+              <input type="text" name="illness" id="illness" placeholder="e.g., Headache, Flu" style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; background: #f8fafc; outline: none; box-shadow: inset 0 1px 2px rgba(15,23,42,0.06);">
+            </div>
+            <div style="display: grid; gap: 6px;">
+              <label for="messageText" style="font-weight: 600; color: var(--text-primary);">Your message</label>
+              <textarea 
+                id="messageText" 
+                name="message" 
+                rows="5" 
+                required 
+                placeholder="Type your message here..."
+                style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 12px; font-family: inherit; font-size: 14px; resize: vertical; background: #f8fafc; outline: none; box-shadow: inset 0 1px 2px rgba(15,23,42,0.06);"
+                aria-required="true"
+                ></textarea>
+            </div>
+          </div>
+          <div id="messageError" style="display: none; padding: 12px; background: #fee; border-left: 3px solid #c00; border-radius: 6px; margin: 14px 0; color: #c00;"></div>
+          <div id="messageSuccess" style="display: none; padding: 12px; background: #e7f6ed; border-left: 3px solid #16a34a; border-radius: 6px; margin: 14px 0; color: #166534;"></div>
+          <div style="display:flex; justify-content:flex-end; margin-top: 4px;">
+            <button type="submit" class="btn btn-primary" id="sendMessageBtn">
+              <span id="sendBtnText">Send message</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> 0xClinic. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    fetch('/api/userdata', {
+      credentials:"include"
+    }).then(response =>{
+      if (!response.ok){
+        window.location.href = '/login';
+      }
+    })
+  </script>
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

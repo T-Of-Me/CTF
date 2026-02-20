@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bot Access</h1>
+        <p>If you've Access Key you can see information in heere </p>
+        <div id="flag"></div>
+    </div>
+    <script>    
+        fetch('/get-flag')
+            .then(response => response.text())
+            .then(flag => {
+                document.getElementById('flag').innerText = flag;
+            });
+    </script>
+</body>
+</html>
+

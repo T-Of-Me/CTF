@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  server:
+    build: src/.
+    ports:
+      - "1337:1337"
+    environment:
+      - HCAPTCHA_SITEKEY=REDACTED
+      - HCAPTCHA_SECRET=REDACTED
+      - FLAG=crew{REDACTED}

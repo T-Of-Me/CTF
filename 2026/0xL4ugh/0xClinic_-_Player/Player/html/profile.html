@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Profile - 0xClinic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/css/dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="/" class="logo">
+        <div class="logo-icon">0x</div>
+        0xClinic
+      </a>
+      <div class="nav-user">
+        <a href="/dashboard" class="btn btn-outline">Dashboard</a>
+        <a href="/api/logout" class="btn btn-outline">Log out</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="dashboard-header">
+      <div class="welcome-badge">
+        <span class="welcome-dot"></span>
+        User Profile
+      </div>
+      <h1 class="dashboard-title">Profile Information</h1>
+      <p class="dashboard-subtitle">View user details</p>
+    </div>
+
+    <div id="errorMessage" style="display: none; padding: 12px; background: #fee; border-left: 3px solid #c00; border-radius: 4px; margin-bottom: 15px; color: #c00; max-width: 600px; margin-left: auto; margin-right: auto;"></div>
+    <div id="successMessage" style="display: none; padding: 12px; background: #e7f6ed; border-left: 3px solid #16a34a; border-radius: 4px; margin-bottom: 15px; color: #166534; max-width: 600px; margin-left: auto; margin-right: auto;"></div>
+
+    <section class="section">
+      <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <div id="loadingMessage" style="text-align: center; padding: 40px; color: var(--text-muted);">
+          Loading profile...
+        </div>
+        
+        <div id="profileContent" style="display: none;">
+          <div style="text-align: center; margin-bottom: 30px;">
+            <div class="user-avatar" id="profileAvatar" style="width: 80px; height: 80px; font-size: 32px; margin: 0 auto 15px;">U</div>
+            <h2 id="profileFullName" style="font-size: 24px; margin-bottom: 5px; color: var(--text-main);">Full Name</h2>
+            <div id="profileRole" style="display: inline-block; padding: 4px 12px; border-radius: 999px; background: rgba(14, 165, 233, 0.1); color: #0284c7; font-size: 14px; font-weight: 500; text-transform: capitalize;"></div>
+          </div>
+          
+          <div style="display: grid; gap: 15px; margin-bottom: 25px;">
+            <div style="padding: 15px; background: rgba(14, 165, 233, 0.05); border-radius: 8px;">
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Name</div>
+              <div id="profileName" style="font-size: 16px; color: var(--text-main); font-weight: 500;"></div>
+            </div>
+            
+            <div style="padding: 15px; background: rgba(14, 165, 233, 0.05); border-radius: 8px;">
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Email</div>
+              <div id="profileEmail" style="font-size: 16px; color: var(--text-main); font-weight: 500;"></div>
+            </div>
+            
+            <div style="padding: 15px; background: rgba(14, 165, 233, 0.05); border-radius: 8px;">
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;">Role</div>
+              <div id="profileRoleDetail" style="font-size: 16px; color: var(--text-main); font-weight: 500; text-transform: capitalize;"></div>
+            </div>
+          </div>
+
+          <!-- Edit Form - only shown for current user -->
+          <div id="editFormSection" style="display: none; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 15px; color: var(--text-main);">Edit Profile</h3>
+            <form id="editForm" onsubmit="handleEditProfile(event)" style="display: grid; gap: 12px;">
+              <div style="display: grid; gap: 6px;">
+                <label for="editName" style="font-weight: 500; color: var(--text-primary);">Name</label>
+                <input 
+                  type="text" 
+                  id="editName" 
+                  name="name" 
+                  placeholder="Enter your name"
+                  required
+                  style="padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; background: #f8fafc;"
+                />
+              </div>
+              <div style="display: grid; gap: 6px;">
+                <label for="editEmail" style="font-weight: 500; color: var(--text-primary);">Email</label>
+                <input 
+                  type="email" 
+                  id="editEmail" 
+                  name="email" 
+                  placeholder="Enter your email"
+                  required
+                  style="padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; background: #f8fafc;"
+                />
+              </div>
+              <div style="display: grid; gap: 6px;">
+                <label for="editUsername" style="font-weight: 500; color: var(--text-primary);">Username</label>
+                <input 
+                  type="text" 
+                  id="editUsername" 
+                  name="username" 
+                  placeholder="Enter your username"
+                  required
+                  style="padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; background: #f8fafc;"
+                />
+              </div>
+              <div id="editError" style="display: none; padding: 10px; background: #fee; border-left: 3px solid #c00; border-radius: 4px; color: #c00; font-size: 13px;"></div>
+              <button type="submit" class="btn btn-primary" id="editBtn" style="align-self: flex-start;">
+                <span id="editBtnText">Save Changes</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> 0xClinic. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Check authentication
+    fetch('/api/userdata', {
+      credentials: "include"
+    }).then(response => {
+      if (!response.ok) {
+        window.location.href = '/login';
+      }
+    });
+
+    let currentUsername = null;
+    let isCurrentUser = false;
+
+    async function getCurrentUsername() {
+      const resp = await fetch('/api/userdata', { credentials: 'include' });
+      if (!resp.ok) throw new Error('Not authenticated');
+      const data = await resp.json();
+      return data.username || (data.data && data.data.username);
+    }
+
+    async function loadProfile(username) {
+      const response = await fetch(`/api/profile/${encodeURIComponent(username)}`, {
+        credentials: 'include'
+      });
+      if (!response.ok) throw new Error('Failed to load profile');
+      const data = await response.json();
+      if (!(data.status === 'success' && data.data)) {
+        throw new Error(data.message || 'Failed to load profile');
+      }
+      const user = data.data;
+
+      document.getElementById('profileName').textContent = user.name || 'N/A';
+      document.getElementById('profileEmail').textContent = user.email || 'N/A';
+      document.getElementById('profileRole').textContent = user.role || 'N/A';
+      document.getElementById('profileRoleDetail').textContent = user.role || 'N/A';
+      document.getElementById('profileFullName').textContent = user.name || 'N/A';
+
+      const initial = user.name ? user.name.charAt(0).toUpperCase() : 'U';
+      document.getElementById('profileAvatar').textContent = initial;
+
+      // Show edit form only if viewing current user's profile
+      if (isCurrentUser) {
+        document.getElementById('editFormSection').style.display = 'block';
+        document.getElementById('editName').value = user.name || '';
+        document.getElementById('editEmail').value = user.email || '';
+        document.getElementById('editUsername').value = user.username || currentUsername || '';
+      }
+
+      document.getElementById('loadingMessage').style.display = 'none';
+      document.getElementById('profileContent').style.display = 'block';
+    }
+
+    async function handleEditProfile(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('editName').value.trim();
+      const email = document.getElementById('editEmail').value.trim();
+      const username = document.getElementById('editUsername').value.trim();
+      const editError = document.getElementById('editError');
+      const editBtn = document.getElementById('editBtn');
+      const editBtnText = document.getElementById('editBtnText');
+
+      editError.style.display = 'none';
+
+      // Validate all fields are filled
+      if (!name || !email || !username) {
+        editError.textContent = 'Please fill in all fields';
+        editError.style.display = 'block';
+        return;
+      }
+
+      editBtn.disabled = true;
+      editBtnText.textContent = 'Saving...';
+
+      try {
+        const response = await fetch('/api/profile', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ name, email, username })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          document.getElementById('successMessage').textContent = 'Profile updated successfully!';
+          document.getElementById('successMessage').style.display = 'block';
+          setTimeout(() => {
+            location.reload();
+          }, 1500);
+        } else {
+          editError.textContent = data.message || 'Update failed';
+          editError.style.display = 'block';
+          editBtn.disabled = false;
+          editBtnText.textContent = 'Save Changes';
+        }
+      } catch (error) {
+        editError.textContent = 'An error occurred';
+        editError.style.display = 'block';
+        editBtn.disabled = false;
+        editBtnText.textContent = 'Save Changes';
+      }
+    }
+
+    (async () => {
+      try {
+        currentUsername = await getCurrentUsername();
+        const urlParams = new URLSearchParams(window.location.search);
+        let username = urlParams.get('username');
+        
+        if (!username) {
+          username = currentUsername;
+          isCurrentUser = true;
+        } else {
+          isCurrentUser = (username === currentUsername);
+        }
+
+        await loadProfile(username);
+      } catch (error) {
+        document.getElementById('loadingMessage').style.display = 'none';
+        document.getElementById('errorMessage').textContent = error.message || 'An error occurred while loading the profile';
+        document.getElementById('errorMessage').style.display = 'block';
+        console.error('Profile error:', error);
+      }
+    })();
+  </script>
+</body>
+</html>

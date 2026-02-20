@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}Perimeter Drift | Workspace{% endblock %}
+{% block content %}
+<section class="grid items-start gap-5 lg:grid-cols-[1.3fr_1fr]">
+  <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6">
+    <p class="text-xs uppercase tracking-[0.24em] text-red-200">Research Console</p>
+    <h1 class="mt-2 text-3xl text-white md:text-4xl">Disclosure Operations</h1>
+    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
+      Coordinate responsible disclosure for external targets with separated researcher and triage lanes. Validation dispatch and ingestion workflows adapt automatically to your current role.
+    </p>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border border-zinc-800 bg-black/40 p-4">
+        <p class="text-xs uppercase tracking-[0.2em] text-zinc-500">Scope</p>
+        <p class="mt-2 text-lg text-white">External Programs</p>
+      </div>
+      <div class="rounded-xl border border-zinc-800 bg-black/40 p-4">
+        <p class="text-xs uppercase tracking-[0.2em] text-zinc-500">Triage Queue</p>
+        <p class="mt-2 text-lg text-white">Elevated</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="rounded-2xl border border-zinc-800 bg-black/60 p-6">
+    <h2 class="text-xl text-white">Identity</h2>
+    <dl class="mt-4 grid gap-3 text-sm">
+      <div class="rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+        <dt class="text-zinc-500">Fullname</dt>
+        <dd class="mt-1 text-zinc-100">{{ current_user["display_name"] }}</dd>
+      </div>
+      <div class="rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+        <dt class="text-zinc-500">Role</dt>
+        <dd class="mt-1 uppercase tracking-[0.16em] text-red-200">{{ current_user["role"] }}</dd>
+      </div>
+    </dl>
+  </article>
+</section>
+
+<section class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6">
+  <div class="flex items-center justify-between">
+    <h2 class="text-xl text-white">Program Scope Index</h2>
+    <a class="rounded-md border border-zinc-700 px-3 py-1.5 text-xs uppercase tracking-[0.2em] text-zinc-300 transition hover:border-ember hover:text-white" href="{{ url_for('search') }}">Browse Programs</a>
+  </div>
+  <div class="mt-4 grid gap-4 md:grid-cols-2">
+    {% for doc in docs %}
+    <article class="rounded-xl border border-zinc-800 bg-black/50 p-4">
+      <p class="text-lg text-white">{{ doc["title"] }}</p>
+      <p class="mt-2 text-sm text-zinc-300">{{ doc["preview"] }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6">
+  <div class="flex items-center justify-between gap-3">
+    <div>
+      <h2 class="text-xl text-white">Disclosure Reports</h2>
+      {% if current_user["role"] == "researcher" %}
+      <p class="mt-2 text-sm text-zinc-400">Submit and track responsible disclosure findings across external programs.</p>
+      {% else %}
+      <p class="mt-2 text-sm text-zinc-400">Review and triage incoming submissions across external programs.</p>
+      {% endif %}
+    </div>
+    <div class="flex items-center gap-2">
+      <a class="rounded-md border border-zinc-700 px-3 py-1.5 text-xs uppercase tracking-[0.2em] text-zinc-300 transition hover:border-ember hover:text-white" href="{{ url_for('reports_index') }}">All Reports</a>
+      {% if current_user["role"] == "researcher" %}
+      <a class="rounded-md bg-ember px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-red-600" href="{{ url_for('report_new') }}">New Report</a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if reports %}
+  <div class="mt-4 grid gap-4 md:grid-cols-2">
+    {% for report in reports %}
+    <a href="{{ url_for('report_view', report_id=report['id']) }}" class="block rounded-xl border border-zinc-800 bg-black/50 p-4 transition hover:border-ember">
+      <p class="text-xs uppercase tracking-[0.16em] text-zinc-500">Report #{{ report["id"] }}</p>
+      <p class="mt-2 text-lg text-white">{{ report["title"] }}</p>
+      <p class="mt-2 text-sm text-zinc-300">Type: <span class="text-zinc-100">{{ report["vuln_type"] }}</span></p>
+      <p class="mt-2 text-xs text-zinc-500">Reporter: {{ report["reporter_name"] }} ({{ report["reporter_username"] }})</p>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="mt-4 rounded-lg border border-zinc-800 bg-black/50 px-4 py-3 text-sm text-zinc-300">No reports.</p>
+  {% endif %}
+</section>
+
+<section class="mt-6 rounded-2xl border border-zinc-800 bg-black/60 p-6">
+  <h2 class="text-xl text-white">Automated Validation Dispatch</h2>
+  <p class="mt-2 text-sm text-zinc-400">Queue a reproduction URL for isolated validation runs. Reviewer clearance is required.</p>
+  {% if current_user["role"] in ["reviewer", "admin"] %}
+  <form method="post" action="{{ url_for('report') }}" class="mt-4 flex flex-col gap-3 sm:flex-row">
+    <input required name="url" placeholder="https://target.example.com/repro" class="w-full rounded-lg border border-zinc-700 bg-black px-4 py-2.5 text-zinc-100 outline-none transition focus:border-ember">
+    <button class="rounded-lg bg-ember px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-red-600">Queue</button>
+  </form>
+  {% else %}
+  <p class="mt-4 rounded-lg border border-red-800 bg-red-950/20 px-4 py-3 text-sm text-red-100/80">
+    Your current role cannot dispatch validation links directly. Request delegated reviewer authorization through triage operations.
+  </p>
+  <div class="mt-4 grid gap-4 xl:grid-cols-2">
+    <form method="post" action="{{ url_for('review_material_upload') }}" enctype="multipart/form-data" class="rounded-xl border border-zinc-800 bg-black/50 p-4">
+      <p class="text-xs uppercase tracking-[0.2em] text-zinc-500">Attachment Intake</p>
+      <p class="mt-2 text-sm text-zinc-300">Upload supporting artifacts for delegated reviewer approvals.</p>
+      <input class="mt-3 block w-full rounded-lg border border-zinc-700 bg-black px-3 py-2 text-sm text-zinc-100" type="file" name="file" required>
+      <button class="mt-3 rounded-lg border border-zinc-700 px-3 py-2 text-xs uppercase tracking-[0.2em] text-zinc-200 transition hover:border-ember hover:text-white">Store Attachment</button>
+    </form>
+    <form method="post" action="{{ url_for('review_escalate') }}" class="rounded-xl border border-zinc-800 bg-black/50 p-4">
+      <p class="text-xs uppercase tracking-[0.2em] text-zinc-500">Delegated Authorization</p>
+      <p class="mt-2 text-sm text-zinc-300">Paste the signed access token issued by triage operations.</p>
+      <textarea name="grant" rows="4" required class="mt-3 w-full rounded-lg border border-zinc-700 bg-black p-3 text-xs text-zinc-200 outline-none transition focus:border-ember" placeholder="Paste signed access token"></textarea>
+      <button class="mt-3 rounded-lg bg-ember px-3 py-2 text-xs uppercase tracking-[0.2em] text-white transition hover:bg-red-600">Apply Authorization</button>
+    </form>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

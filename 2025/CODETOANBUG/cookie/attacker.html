@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attacker Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Create Attack Script</h1>
+        <textarea id="csrfScript" rows="10" placeholder="Enter your HTML and JS attack script here..."></textarea>
+        <br>
+        <button id="saveScript">Save Script</button>
+        <button id="testScript">Test Script</button>
+        <button id="sendToBot">Send to Bot</button>
+        <button id="viewLogs">View Logs</button>
+        <div id="message"></div>
+
+        <div id="cookieDisplay" style="margin-top: 20px; border: 1px solid #333; padding: 10px; display: none;">
+            <h3>Admin Cookie:</h3>
+            <p id="cookieValue">No cookie available</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('saveScript').onclick = function() {
+            const script = document.getElementById('csrfScript').value;
+            fetch('/save-script', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ script })
+            }).then(res => res.json()).then(data => {
+                document.getElementById('message').innerText = data.message;
+            });
+        };
+
+        document.getElementById('testScript').onclick = function() {
+            window.location.href = '/test';
+        };
+
+        document.getElementById('sendToBot').onclick = function() {
+            fetch('/send-script', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('message').innerText = data.message;
+                    fetchCookie();
+                });
+        };
+
+        document.getElementById('viewLogs').onclick = function() {
+            window.location.href = '/log';
+        };
+
+        function fetchCookie() {
+            fetch('/bot')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.cookie) {
+                        document.getElementById('cookieDisplay').style.display = 'block';
+                        document.getElementById('cookieValue').innerText = data.cookie;
+                    } else {
+                        document.getElementById('cookieValue').innerText = 'No cookie available';
+                    }
+                })
+                .catch(err => {
+                    console.error('Failed to fetch cookie:', err);
+                });
+        }
+    </script>
+</body>
+</html>

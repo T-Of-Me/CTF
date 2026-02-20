@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:the-trial.chall.lac.tf)",
+      "Bash(curl:*)",
+      "WebFetch(domain:mutation-mutation.chall.lac.tf)",
+      "Bash(python3:*)",
+      "Bash(# Try different HTTP methods and headers - maybe the challenge serves different content based on request curl -s -X POST https://mutation-mutation.chall.lac.tf/)",
+      "Bash(head -20 echo \"=== OPTIONS ===\" curl -s -X OPTIONS https://mutation-mutation.chall.lac.tf/)",
+      "Bash(head -20 echo \"=== Accept: text/plain ===\" curl -s -H \"Accept: text/plain\" https://mutation-mutation.chall.lac.tf/)",
+      "Bash(# The challenge name is \"\"mutation-mutation\"\" - try requesting with mutation-related headers or paths # Also try common Flask/gunicorn paths curl -s https://mutation-mutation.chall.lac.tf/mutate)",
+      "Bash(head -5 echo \"===\" curl -s https://mutation-mutation.chall.lac.tf/mutation)",
+      "Bash(head -5 echo \"===\" curl -s \"https://mutation-mutation.chall.lac.tf/?mutation=true\")",
+      "Bash(head -5 echo \"===\" curl -s \"https://mutation-mutation.chall.lac.tf/?real=true\")",
+      "Bash(python:*)",
+      "WebFetch(domain:bobles-and-narnes.chall.lac.tf)",
+      "WebFetch(domain:admin-bot-yrta3.instancer.lac.tf)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}

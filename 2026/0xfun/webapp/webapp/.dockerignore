@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+package-lock.json
+tailwind.config.js
+tailwind.input.css
+instance
+*.pyc
+__pycache__

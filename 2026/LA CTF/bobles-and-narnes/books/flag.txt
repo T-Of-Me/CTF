@@ -1,0 +1,1 @@
+lactf{test_flag_for_local_exploit_demo}

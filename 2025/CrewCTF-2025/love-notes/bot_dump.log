@@ -1,0 +1,399 @@
+
+--- BOT CONNECTED [2025-09-20 16:30:18] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.0.0 Safari/537.36
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.9
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 35.204.253.196
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: NL
+    Cf-Ray: 98204da63743b8e1-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Ch-Ua: "Not=A?Brand";v="24", "Chromium";v="140"
+    Sec-Ch-Ua-Mobile: ?0
+    Sec-Ch-Ua-Platform: "Linux"
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: cross-site
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 35.204.253.196
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 16:37:32] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.5
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 117.4.240.104
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: VN
+    Cf-Ray: 9820584366421a5b-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: none
+    Sec-Fetch-User: ?1
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 117.4.240.104
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 16:37:46] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.5
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 117.4.240.104
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: VN
+    Cf-Ray: 9820589bd56d1a5b-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: none
+    Sec-Fetch-User: ?1
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 117.4.240.104
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 16:37:52] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.5
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 117.4.240.104
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: VN
+    Cf-Ray: 982058c0d1961a5b-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: none
+    Sec-Fetch-User: ?1
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 117.4.240.104
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 16:41:16] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.5
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 117.4.240.104
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: VN
+    Cf-Ray: 98205db6f2af8552-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: none
+    Sec-Fetch-User: ?1
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 117.4.240.104
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 16:43:56] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.0.0 Safari/537.36
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.9
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 35.204.253.196
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: NL
+    Cf-Ray: 9820619bd6af2cb3-AMS
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Ch-Ua: "Not=A?Brand";v="24", "Chromium";v="140"
+    Sec-Ch-Ua-Mobile: ?0
+    Sec-Ch-Ua-Platform: "Linux"
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: cross-site
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 35.204.253.196
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 16:47:39] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.0.0 Safari/537.36
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.9
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 35.204.253.196
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: NL
+    Cf-Ray: 98206710a171fff2-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Ch-Ua: "Not=A?Brand";v="24", "Chromium";v="140"
+    Sec-Ch-Ua-Mobile: ?0
+    Sec-Ch-Ua-Platform: "Linux"
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: cross-site
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 35.204.253.196
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 17:40:02] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: TelegramBot (like TwitterBot)
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.5
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 149.154.161.220
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: NL
+    Cf-Ray: 9820b3cfb2241de3-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Cookie: euConsent=true; BCPermissionLevel=PERSONAL; BC_GDPR=11111; fhCookieConsent=true; gdpr-source=GB; gdpr_consent=YES; beget=begetok; SOCS=CAISNQgEEitib3FfaWRlbnRpdHlmcm9udGVuZHVpc2VydmVyXzIwMjMwNzIzLjA5X3AwGgJlbiACGgYIgMSBpgY
+    X-Forwarded-For: 149.154.161.220
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: euConsent=true; BCPermissionLevel=PERSONAL; BC_GDPR=11111; fhCookieConsent=true; gdpr-source=GB; gdpr_consent=YES; beget=begetok; SOCS=CAISNQgEEitib3FfaWRlbnRpdHlmcm9udGVuZHVpc2VydmVyXzIwMjMwNzIzLjA5X3AwGgJlbiACGgYIgMSBpgY
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 17:40:17] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.0.0 Safari/537.36
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.9
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 35.204.253.196
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: NL
+    Cf-Ray: 9820b42ab08e1ef7-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Ch-Ua: "Not=A?Brand";v="24", "Chromium";v="140"
+    Sec-Ch-Ua-Mobile: ?0
+    Sec-Ch-Ua-Platform: "Linux"
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: cross-site
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 35.204.253.196
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 17:40:34] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.0.0 Safari/537.36
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.9
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 35.204.253.196
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: NL
+    Cf-Ray: 9820b497d3999ff5-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Ch-Ua: "Not=A?Brand";v="24", "Chromium";v="140"
+    Sec-Ch-Ua-Mobile: ?0
+    Sec-Ch-Ua-Platform: "Linux"
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: cross-site
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 35.204.253.196
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 18:08:19] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.5
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 117.4.240.104
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: VN
+    Cf-Ray: 9820dd40234c10ac-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: cross-site
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 117.4.240.104
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    
+
+--- BOT CONNECTED [2025-09-20 18:08:48] ---
+[+] Headers:
+    Host: limit-ppm-premiere-frank.trycloudflare.com
+    User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    Accept-Encoding: gzip
+    Accept-Language: en-US,en;q=0.5
+    Cdn-Loop: cloudflare; loops=1; subreqs=1
+    Cf-Connecting-Ip: 117.4.240.104
+    Cf-Ew-Via: 15
+    Cf-Ipcountry: VN
+    Cf-Ray: 9820ddf5d5bb10ac-HKG
+    Cf-Visitor: {"scheme":"https"}
+    Cf-Warp-Tag-Id: f7ee91a0-e0ad-4611-a832-4062188b763f
+    Cf-Worker: trycloudflare.com
+    Connection: keep-alive
+    Priority: u=0, i
+    Sec-Fetch-Dest: document
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-Site: cross-site
+    Upgrade-Insecure-Requests: 1
+    X-Forwarded-For: 117.4.240.104
+    X-Forwarded-Proto: https
+
+[+] Raw Cookie: 
+
+[+] Extracted session token:
+    [!] Not found
+
+[+] Query Params:
+    

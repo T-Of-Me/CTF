@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>0xClinic - Private Medical Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/css/index.css" />
+
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="/" class="logo">
+        <div class="logo-icon">0x</div>
+        0xClinic
+      </a>
+      <div class="nav-actions">
+        <a href="/dashboard" class="btn btn-outline">Dashboard</a>
+        <a href="/api/logout" class="btn btn-outline" >Log out</a>
+      </div>
+    </div>
+  </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="hero-badge"><span class="hero-badge-dot"></span>Private Medical Care</div>
+          <h1 class="hero-title">Expert <span>medical care</span> for your health and wellness.</h1>
+          <p class="hero-subtitle">Book appointments with certified doctors, manage prescriptions, and keep all your medical history in one secure place.</p>
+          <div class="hero-cta">
+            <button class="btn btn-primary" onclick="getStarted()">Get Started</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>120+</strong><span>Doctors</span></div>
+            <div class="hero-stat"><strong>15k+</strong><span>Patients</span></div>
+            <div class="hero-stat"><strong>4.9/5</strong><span>Rating</span></div>
+          </div>
+        </div>
+      </section>
+      <section id="services" class="section">
+        <div class="section-header">
+          <div><h2 class="section-title">Our services</h2></div>
+        </div>
+        <div class="services-grid">
+          <article class="card">
+            <div class="card-icon">🩺</div>
+            <h3 class="card-title">Appointments</h3>
+            <p class="card-text">Online or in-clinic visits with experienced doctors.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">📁</div>
+            <h3 class="card-title">Medical records</h3>
+            <p class="card-text">Digital storage with access control.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">💊</div>
+            <h3 class="card-title">Prescriptions</h3>
+            <p class="card-text">Renewal and medication reminders.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">📊</div>
+            <h3 class="card-title">Analytics</h3>
+            <p class="card-text">Track vitals and health trends.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+
+      <div class="footer-inner">
+        <div>
+          © <span id="year"></span> 0xClinic. All rights reserved.
+        </div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function getStarted() {
+        const dashboardLink = document.querySelector('a[href="/dashboard"]');
+        if (dashboardLink) {
+          window.location.href = '/dashboard';
+        } else {
+          window.location.href = '/login';
+        }
+      }
+    </script>
+    <script>
+      fetch('/api/userdata', {
+        credentials:"include"
+      }).then(response =>{
+        if (!response.ok){
+          document.getElementsByClassName('nav-actions')[0].innerHTML = `
+            <a href="login" class="btn btn-outline">Log in</a>
+            <a href="/register" class="btn btn-primary">Sign up</a>
+          `;
+        }
+      })
+    </script>
+</body>
+</html>

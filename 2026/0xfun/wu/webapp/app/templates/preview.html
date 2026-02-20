@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}">
+  <title>{{ doc["title"] }}</title>
+</head>
+<body class="m-0 bg-black p-3 font-mono text-zinc-100">
+  <article class="h-full rounded-lg bg-zinc-950/80 p-3">
+    <h1 class="text-xs text-zinc-100">{{ doc["title"] }}</h1>
+    <p class="mt-2 text-[11px] leading-relaxed text-zinc-400">{{ doc["preview"] }}</p>
+  </article>
+</body>
+</html>

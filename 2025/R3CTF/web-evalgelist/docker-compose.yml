@@ -1,0 +1,12 @@
+services:
+  evalgelist:
+    build: .
+    environment:
+      - FLAG=R3CTF{g00d_j0b_my_fr13nd}
+    ports:
+      - "8087:80"
+    restart: unless-stopped
+    # Thêm command để debug
+    command: ["/bin/sh", "-c", "ls -la / && /entrypoint.sh"]
+    volumes:
+      - ./logs:/var/log/nginx

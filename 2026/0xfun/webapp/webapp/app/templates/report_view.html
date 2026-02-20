@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Perimeter Drift | Report{% endblock %}
+{% block content %}
+<section class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div>
+      <div class="flex flex-wrap items-center gap-2">
+        <p class="text-xs uppercase tracking-[0.24em] text-red-200">Disclosure Report</p>
+        <span class="inline-block rounded-full bg-red-950/40 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-red-100">{{ report["vuln_type"] }}</span>
+      </div>
+      <h1 class="mt-3 text-3xl text-white">{{ report["title"] }}</h1>
+      <p class="mt-3 text-xs uppercase tracking-[0.2em] text-zinc-500">Report #{{ report["id"] }}</p>
+    </div>
+    <a href="{{ url_for('reports_index') }}" class="rounded-md border border-zinc-700 px-3 py-2 text-xs uppercase tracking-[0.2em] text-zinc-200 transition hover:border-ember hover:text-white">Back to Reports</a>
+  </div>
+</section>
+
+<section class="mt-6 grid gap-6 xl:grid-cols-[1.1fr_1fr]">
+  <article class="rounded-2xl border border-zinc-800 bg-black/60 p-6">
+    <h2 class="text-lg text-white">Metadata</h2>
+    <dl class="mt-4 grid gap-3 text-sm">
+      <div class="rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+        <dt class="text-zinc-500">Type</dt>
+        <dd class="mt-1 text-zinc-100">{{ report["vuln_type"] }}</dd>
+      </div>
+      <div class="rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+        <dt class="text-zinc-500">Reporter</dt>
+        <dd class="mt-1 text-zinc-100">{{ report["reporter_name"] }}</dd>
+      </div>
+      <div class="rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+        <dt class="text-zinc-500">Username</dt>
+        <dd class="mt-1 text-zinc-100">{{ report["reporter_username"] }}</dd>
+      </div>
+      <div class="rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+        <dt class="text-zinc-500">Email</dt>
+        <dd class="mt-1 text-zinc-100">{{ report["reporter_email"] }}</dd>
+      </div>
+    </dl>
+    <p class="mt-4 text-sm text-zinc-400">
+      Reports render inside the triage workspace to support formatting and legacy validation tooling.
+    </p>
+  </article>
+
+  <article class="grid gap-4 rounded-2xl border border-zinc-800 bg-black/60 p-6">
+    <div class="flex items-center justify-between">
+      <h2 class="text-lg text-white">Report</h2>
+      <p class="text-xs uppercase tracking-[0.2em] text-zinc-500">Rendered</p>
+    </div>
+    <div id="report-body-slot" class="min-h-40 rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-200"></div>
+    <div id="module-output" class="hidden"></div>
+  </article>
+</section>
+
+<textarea id="report-body-source" class="hidden">{{ report["body_html"] }}</textarea>
+<div id="workspace-state" data-state='{{ state_json|e }}' class="hidden"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "ui/": "/static/assets/ui/"
+  }
+}
+</script>
+<script src="{{ url_for('static', filename='js/dompurify.min.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/report_view.js') }}"></script>
+{% endblock %}

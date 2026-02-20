@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Perimeter Drift | Reports{% endblock %}
+{% block content %}
+<section class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6">
+  <div class="flex items-start justify-between gap-3">
+    <div>
+      <p class="text-xs uppercase tracking-[0.24em] text-red-200">Disclosure Reports</p>
+      <h1 class="mt-2 text-3xl text-white">Program Findings</h1>
+      <p class="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-300">
+        Reports capture root cause analysis, proof of concept details, and the communications trail required for coordinated disclosure.
+      </p>
+    </div>
+    {% if current_user["role"] == "researcher" %}
+    <a href="{{ url_for('report_new') }}" class="rounded-md bg-ember px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-red-600">New Report</a>
+    {% endif %}
+  </div>
+</section>
+
+{% if reports %}
+<section class="mt-6 grid gap-4 md:grid-cols-2">
+    {% for report in reports %}
+    <a href="{{ url_for('report_view', report_id=report['id']) }}" class="block rounded-2xl border border-zinc-800 bg-black/60 p-6 transition hover:border-ember">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <p class="text-xs uppercase tracking-[0.2em] text-zinc-500">Report #{{ report["id"] }}</p>
+        <span class="inline-block rounded-full bg-red-950/40 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-red-100">{{ report["vuln_type"] }}</span>
+      </div>
+      <p class="mt-3 text-xl text-white">{{ report["title"] }}</p>
+      <p class="mt-2 text-xs text-zinc-500">Reporter: {{ report["reporter_name"] }} ({{ report["reporter_username"] }})</p>
+    </a>
+    {% endfor %}
+</section>
+{% else %}
+<section class="mt-6">
+  <article class="rounded-2xl border border-zinc-800 bg-black/60 p-6">
+    <p class="text-sm text-zinc-300">No reports.</p>
+  </article>
+</section>
+{% endif %}
+{% endblock %}

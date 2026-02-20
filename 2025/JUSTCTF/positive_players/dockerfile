@@ -1,0 +1,14 @@
+FROM node:20
+
+WORKDIR /app
+
+RUN useradd -ms /bin/bash challenge
+
+COPY . .
+RUN npm install 
+
+USER challenge
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]

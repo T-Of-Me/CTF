@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  airspeed:
+    build: src
+    restart: unless-stopped
+    networks:
+      - internal
+
+  nginx:
+      image: nginx:latest
+      ports:
+        - "80:80"
+      volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf
+      depends_on:
+        - airspeed
+      restart:
+        unless-stopped
+      networks:
+        - default
+        - internal
+        
+networks:
+  internal:
+    external: false

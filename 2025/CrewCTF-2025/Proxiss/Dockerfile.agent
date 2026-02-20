@@ -1,0 +1,28 @@
+FROM golang:1.24-alpine AS builder
+
+WORKDIR /app
+COPY tunnel/go.mod tunnel/go.sum ./
+RUN go mod download
+COPY ./tunnel .
+RUN go build -o agent ./cmd/agent
+
+FROM python:3.12-slim
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends supervisor && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir flask
+
+WORKDIR /app
+
+COPY --from=builder /app/agent .
+
+COPY services/agent_service_user.py .
+COPY services/agent_service_admin.py .
+
+COPY supervisord_agent.conf /etc/supervisord.conf
+
+EXPOSE 1337 3000
+
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
