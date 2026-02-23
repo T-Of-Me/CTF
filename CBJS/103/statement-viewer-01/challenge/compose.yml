@@ -1,0 +1,10 @@
+name: statement-viewer-level1
+services:
+  web:
+    build: web
+    ports:
+      - '8080:8080'
+    environment:
+      - CATALINA_OPTS=-Xms512m -Xmx1024m
+      - JAVA_OPTS=-Dfile.encoding=UTF-8
+    restart: unless-stopped

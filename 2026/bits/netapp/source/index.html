@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BITSCTF 2026 — Service Portal</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0a0e17;
+      color: #c9d1d9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      max-width: 520px;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 1.6rem;
+      color: #58a6ff;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 0.85rem;
+      color: #8b949e;
+      margin-bottom: 2rem;
+    }
+    .status-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .status-card h2 {
+      font-size: 1rem;
+      color: #c9d1d9;
+      margin-bottom: 0.75rem;
+    }
+    .service-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #21262d;
+    }
+    .service-row:last-child { border-bottom: none; }
+    .service-name { font-size: 0.9rem; }
+    .badge {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .badge.ok { background: #1b3a2d; color: #3fb950; }
+    .badge.internal { background: #2a1f0d; color: #d29922; }
+    .note {
+      font-size: 0.75rem;
+      color: #484f58;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: #30363d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ Netapp</h1>
+    <p class="subtitle">Secure cloud services by Netapp</p>
+
+    <div class="status-card">
+      <h2>Services</h2>
+      <div class="service-row">
+        <span class="service-name">Web Portal</span>
+        <span class="badge ok">ONLINE</span>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Auth Gateway</span>
+        <span class="badge ok">ONLINE</span>
+      </div>
+      <div class="service-row">
+        <span class="service-name">flag-service</span>
+        <span class="badge internal">INTERNAL</span>
+      </div>
+    </div>
+
+    <p class="note">
+      All public endpoints are proxied through our edge network.<br>
+      Internal services are only accessible through our vpn. 
+    </p>
+  </div>
+
+  <footer>&copy; 2026 Netapp</footer>
+</body>
+</html>

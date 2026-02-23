@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context antiResourceLocking="false" privileged="true">
+    <!-- Allow access from any IP address -->
+    <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+        allow=".*" />
+</Context>
